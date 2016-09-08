@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <!--META-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <!--FAVICON-->
+    <!--STYLESHEETS-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--HOSTED JAVASCRIPTS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+    <!--MY JAVASCRIPTS-->
+    <script>
+        var socket = io.connect('https://localhost:8443', {secure: true});
+        socket.on('news', function (data) {
+            console.log(data);
+            socket.emit('my other event', { my: 'data' });
+        });
+    </script>
+</head>
+<body>
+{{{body}}}
+</body>
+</html>

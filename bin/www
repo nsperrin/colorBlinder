@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var httpsApp = require('../app');
+var debug = require('debug')('colorBlinder:server');
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var privateKey  = fs.readFileSync('bin/key.pem', 'utf8');
+var certificate = fs.readFileSync('bin/cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var httpsServer = https.createServer(credentials, httpsApp);
+httpsServer.listen(8443);
+
+
+var express = require('express');
+var httpApp = express();
+var httpRouter = express.Router();
+httpApp.use('*', httpRouter);
+httpRouter.get('*', function(req, res){
+  var host = req.get('Host');
+  host = host.replace(/:\d+$/, ":8443");
+  // determine the redirect destination
+  var destination = ['https://', host, req.url].join('');
+  console.log(destination);
+  res.redirect(destination);
+});
+var httpServer = http.createServer(httpApp);
+httpServer.listen(8080);
+
+
+var io = require('socket.io')(httpsServer);
+var ioRouter = require('../routes/ioRouter');
+var session = require("express-session")({
+  secret: certificate,
+  resave: true,
+  saveUninitialized: true
+});
+var sharedSession = require("express-socket.io-session");
+httpsApp.use(session);
+io.use(sharedSession(session, {
+  autoSave:true
+}));
+io.on('connection', ioRouter.ioRoute);
+
+
