@@ -1,1 +1,22 @@
-<div class="boxO green"></div>
+<nav class="navbar navbar-inverse topnav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar-unverified">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ColorBlinder</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar-unverified">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="create-u">Create</a></li>
+                <li><a ui-sref="view-u">View</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-click="displaySignUp()"><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li ng-click="displayLogin()"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

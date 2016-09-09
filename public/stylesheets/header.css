@@ -1,0 +1,15 @@
+.topnav {
+  background-color: darkslategray;
+  border-radius: 0;
+  border:none;
+  color: white;
+}
+
+.navbar-brand{
+    cursor: default;
+    color: white !important;
+}
+
+.navbar-nav a{
+     cursor: pointer !important;
+}
