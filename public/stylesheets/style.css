@@ -7,5 +7,20 @@ a {
   color: #00B7FF;
 }
 
-[class*="span"] { background: #EEF; }
-[class*="span"] [class*="span"] { background: #FEE; }
+.boxO{
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.red{
+  background-color: red;
+}
+.blue{
+  background-color: blue;
+}
+.green{
+  background-color: green;
+}
+.darkviolet{
+  background-color: darkviolet;
+}
