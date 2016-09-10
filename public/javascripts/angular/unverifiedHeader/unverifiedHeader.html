@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse topnav">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -14,9 +15,19 @@
                 <li><a ui-sref="view-u">View</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-click="displaySignUp()"><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li ng-click="displayLogin()"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ng-click="displaySignUp()">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user"></span> Sign Up
+                    </a>
+                </li>
+                <li ng-click="displayLogin()">
+                    <a href="#">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<cb-login-form></cb-login-form>
+<cb-sign-up-form></cb-sign-up-form>

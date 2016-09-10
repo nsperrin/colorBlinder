@@ -13,3 +13,7 @@
 .navbar-nav a{
      cursor: pointer !important;
 }
+
+.dropdown-menu{
+    color:black;
+}
