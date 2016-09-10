@@ -1,3 +1,5 @@
+
+
 .topnav {
   background-color: darkslategray;
   border-radius: 0;
@@ -13,7 +15,65 @@
 .navbar-nav a{
      cursor: pointer !important;
 }
+.navbar {
+    margin-bottom: 0;
+}
 
-.dropdown-menu{
-    color:black;
+input[type=email], input[type=password]{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    box-shadow: none;
+    margin-top:10px;
+}
+
+input[type=email]:focus, input[type=password]:focus{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    box-shadow: none;
+}
+
+#loginForm, #signUpForm{
+    border: 1px solid gray;
+    padding:20px;
+}
+
+.centerTextCont{
+    text-align: center;
+}
+
+#loginForm .btn {
+    margin-top: 10px;
+}
+
+.bottom-align-text {
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+}
+
+.small-text{
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif;
+}
+
+label{
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif !important;
+    opacity:  1 !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif !important;
+    opacity:  1 !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-family: Montserrat-Light, Helvetica, Arial, sans-serif !important;
 }
