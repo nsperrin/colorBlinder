@@ -7,8 +7,7 @@ var uiRouting = function($stateProvider, $urlRouterProvider) {
         url:'/create',
         views: {
             navheader:{
-                templateUrl: 'javascripts/angular/unverifiedHeader/unverifiedHeader.html',
-                controller: "master"
+                templateUrl: 'javascripts/angular/unverifiedHeader/unverifiedHeader.html'
             },
             mains:{
                 templateUrl: 'javascripts/angular/create/create.html'
@@ -19,8 +18,7 @@ var uiRouting = function($stateProvider, $urlRouterProvider) {
     var create_v = {
         views: {
             navheader:{
-                templateUrl: 'javascripts/angular/verifiedHeader/verifiedHeader.html',
-                controller: 'master'
+                templateUrl: 'javascripts/angular/verifiedHeader/verifiedHeader.html'
             },
             mains:{
                 templateUrl: 'javascripts/angular/create/create.html'
@@ -32,8 +30,7 @@ var uiRouting = function($stateProvider, $urlRouterProvider) {
         url:'/view',
         views: {
             navheader:{
-                templateUrl: 'javascripts/angular/unverifiedHeader/unverifiedHeader.html',
-                controller: 'master'
+                templateUrl: 'javascripts/angular/unverifiedHeader/unverifiedHeader.html'
             },
             mains:{
                 templateUrl: 'javascripts/angular/view/view.html'
@@ -44,8 +41,7 @@ var uiRouting = function($stateProvider, $urlRouterProvider) {
     var view_v = {
         views: {
             navheader:{
-                templateUrl: 'javascripts/angular/verifiedHeader/verifiedHeader.html',
-                controller: 'master'
+                templateUrl: 'javascripts/angular/verifiedHeader/verifiedHeader.html'
             },
             mains:{
                 templateUrl: 'javascripts/angular/view/view.html'

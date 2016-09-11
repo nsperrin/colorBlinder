@@ -4,7 +4,6 @@
 colorBlinder.directive('cbLoginForm', function() {
     return {
         restrict: 'AEC',
-        templateUrl: 'javascripts/angular/unverifiedHeader/loginForm/loginForm.html',
-        controller: 'master'
+        templateUrl: 'javascripts/angular/unverifiedHeader/loginForm/loginForm.html'
     };
 });

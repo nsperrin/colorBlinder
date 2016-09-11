@@ -31,4 +31,6 @@ colorBlinder.controller('master', ['$scope', function($scope) {
         console.log('logout');
     };
 
+    $scope.socket  = io.connect();
+
 }]);
