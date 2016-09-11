@@ -59,4 +59,4 @@ var uiRouting = function($stateProvider, $urlRouterProvider) {
         .state('create-v', create_v)
         .state('view-u', view_u)
         .state('view-v', view_v);
-}
+};

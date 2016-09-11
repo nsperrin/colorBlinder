@@ -16,12 +16,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-click="displaySignUp()">
-                    <a href="#">
+                    <a href="">
                         <span class="glyphicon glyphicon-user"></span> Sign Up
                     </a>
                 </li>
                 <li ng-click="displayLogin()">
-                    <a href="#">
+                    <a href="">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </a>
                 </li>
@@ -29,5 +29,5 @@
         </div>
     </div>
 </nav>
-<cb-login-form></cb-login-form>
-<cb-sign-up-form></cb-sign-up-form>
+<cb-login-form ng-show="currentState == STATES.LOGIN"></cb-login-form>
+<cb-sign-up-form ng-show="currentState == STATES.SIGNUP"></cb-sign-up-form>

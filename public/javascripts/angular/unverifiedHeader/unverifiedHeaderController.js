@@ -2,11 +2,30 @@
  * Created by Nicholas Perrin on 9/9/2016.
  */
 colorBlinder.controller('unverifiedHeader', ['$scope', function($scope) {
+    $scope.STATES = {
+        CLEAR:0,
+        LOGIN:1,
+        SIGNUP:2
+    };
+
+    $scope.currentState = $scope.STATES.CLEAR;
+
     $scope.displaySignUp = function(){
-        console.log('signup');
+        if($scope.currentState !== $scope.STATES.SIGNUP){
+            $scope.currentState = $scope.STATES.SIGNUP;
+        }else{
+            $scope.currentState = $scope.STATES.CLEAR;
+        }
     };
 
     $scope.displayLogin = function(){
-        console.log('login');
+        if($scope.currentState !== $scope.STATES.LOGIN){
+            $scope.currentState = $scope.STATES.LOGIN;
+        }else{
+            $scope.currentState = $scope.STATES.CLEAR;
+        }
     };
+
+    $scope.scope = $scope;
+
 }]);
