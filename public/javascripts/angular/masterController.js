@@ -1,7 +1,8 @@
 /**
- * Created by Nicholas Perrin on 9/9/2016.
+ * Created by Nicholas Perrin on 9/11/2016.
  */
-colorBlinder.controller('unverifiedHeader', ['$scope', function($scope) {
+
+colorBlinder.controller('master', ['$scope', function($scope) {
     $scope.STATES = {
         CLEAR:0,
         LOGIN:1,
@@ -26,6 +27,8 @@ colorBlinder.controller('unverifiedHeader', ['$scope', function($scope) {
         }
     };
 
-    $scope.scope = $scope;
+    $scope.logout = function(){
+        console.log('logout');
+    };
 
 }]);

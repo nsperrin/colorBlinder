@@ -5,6 +5,6 @@ colorBlinder.directive('cbSignUpForm', function() {
     return {
         restrict: 'AEC',
         templateUrl: 'javascripts/angular/unverifiedHeader/signUpForm/signUpForm.html',
-        controller: 'unverifiedHeader'
+        controller: 'master'
     };
 });
