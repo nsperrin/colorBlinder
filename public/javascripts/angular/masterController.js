@@ -1,15 +1,17 @@
-/**
- * Created by Nicholas Perrin on 9/11/2016.
- */
-
 colorBlinder.controller('master', ['$scope', function($scope) {
+
+    $scope.socket  = io.connect();
     $scope.STATES = {
         CLEAR:0,
         LOGIN:1,
         SIGNUP:2
     };
-
     $scope.currentState = $scope.STATES.CLEAR;
+    $scope.loginCreds = {
+        email:'',
+        pass:'',
+        rememberMe:false
+    };
 
     $scope.displaySignUp = function(){
         if($scope.currentState !== $scope.STATES.SIGNUP){
@@ -31,6 +33,10 @@ colorBlinder.controller('master', ['$scope', function($scope) {
         console.log('logout');
     };
 
-    $scope.socket  = io.connect();
+
+    $scope.login = function(){
+        $scope.socket.emit('loginAuth', $scope.loginCreds);
+    }
+
 
 }]);
