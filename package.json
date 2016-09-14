@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "karmaTest": "./node_modules/.bin/karma start tests/config/karma.conf.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
+    "chrome": "^0.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.13.4",
@@ -14,14 +16,24 @@
     "express-socket.io-session": "^1.3.1",
     "grunt": "^0.4.0",
     "hbs": "~4.0.0",
-    "jasmine": "^2.4.1",
+    "jasmine": "^2.5.1",
+    "jasmine-core": "^2.5.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-json-fixtures-preprocessor": "0.0.6",
+    "karma-mocha-reporter": "^2.1.0",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
     "morgan": "~1.7.0",
     "mysql": "^2.11.1",
     "openssl": "^1.1.0",
+    "phantomjs": "^2.1.7",
     "protractor": "^4.0.3",
     "pwgen": "^0.1.6",
     "selenium": "^2.20.0",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.4.8"
+  },
+  "devDependencies": {
+    "karma-jasmine-spec-runner-reporter": "^0.1.5"
   }
 }
