@@ -1,9 +1,7 @@
 /*
- * I got the color matricies from the following website
+ * I got the color matrix from the following website
  * http://web.archive.org/web/20081014161121/http://www.colorjack.com/labs/colormatrix/
  */
-
-
 
 
 colorBlinder = {
