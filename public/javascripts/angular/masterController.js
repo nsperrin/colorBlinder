@@ -1,3 +1,4 @@
+
 colorBlinder.controller('master', ['$scope', function($scope) {
 
     $scope.socket  = io.connect();
