@@ -13,6 +13,10 @@ module.exports = function(config) {
         ],
         preprocessors: {},
         plugins : [
+            'karma-chai-sinon',
+            'karma-mocha',
+            'karma-sinon',
+            'sinon',
             'karma-phantomjs-launcher',
             'karma-chrome-launcher',
             'karma-jasmine',

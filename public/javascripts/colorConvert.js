@@ -64,7 +64,7 @@ colorBlinder = {
     },
 
     ensureIsValidColorAttribute:function(attribute){
-        return((typeof attribute == "number")?0:((attribute<0)?0:((attribute>255)?255:(attribute))));
+        return((typeof attribute != "number")?0:((attribute<0)?0:((attribute>255)?255:(attribute))));
     },
 
     ensureInputColorIsValid:function(color){
@@ -96,10 +96,9 @@ colorBlinder = {
     },
 
     convert:function(original,matrix){
-        return this.generateNewColor(
-            this.ensureInputColorIsValid(original),
-            this.ensureMatrixIsValid(matrix)
-        );
+        if((original = this.ensureInputColorIsValid(original)) && (matrix = this.ensureMatrixIsValid(matrix))){
+           return this.generateNewColor(original, matrix);
+        }
     },
 
     generateNewColor:function(original, matrix){
@@ -109,4 +108,6 @@ colorBlinder = {
         var a=((original.R*matrix[15])+(original.G*matrix[16])+(original.B*matrix[17])+(original.A*matrix[18])+matrix[19]);
         return this.ensureOutputColorIsValid({R:r,G:g,B:b,A:a});
     }
+
+
 };
