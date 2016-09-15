@@ -110,6 +110,11 @@ describe('Tests for /javascripts/colorConvert.js', function() {
             done();
         });
 
+        it('returns a fixed set of attributes if a bad set is input', function(done){
+            expect(JSON.stringify(colorBlinder.ensureInputColorIsValid({R:-1, G:-1,B:-1}))).toEqual(JSON.stringify({R:0,G:0,B:0}));
+            done();
+        });
+
         it('ensureIsValidColorAttributeIsCalled three times', function(done){
             spyOn(colorBlinder, 'ensureIsValidColorAttribute');
             colorBlinder.ensureInputColorIsValid({R:1,G:1,B:1});
@@ -130,6 +135,11 @@ describe('Tests for /javascripts/colorConvert.js', function() {
                     }
                 }
             }
+            done();
+        });
+
+        it('returns a fixed set of attributes if a bad set is input', function(done){
+            expect(JSON.stringify(colorBlinder.ensureOutputColorIsValid({R:-1, G:-1,B:-1,A:-1}))).toEqual(JSON.stringify({R:0, G:0,B:0,A:0}));
             done();
         });
 
