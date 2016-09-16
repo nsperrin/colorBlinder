@@ -109,10 +109,10 @@ colorBlinder = {
 
     generateNewColor:function(original, matrix){
         original.A = original.A || 255;
-        original.R=((original.R*matrix[0]) +(original.G*matrix[1]) +(original.B*matrix[2]) +(original.A*matrix[3]) +matrix[4]);
-        original.G=((original.R*matrix[5]) +(original.G*matrix[6]) +(original.B*matrix[7]) +(original.A*matrix[8]) +matrix[9]);
-        original.B=((original.R*matrix[10])+(original.G*matrix[11])+(original.B*matrix[12])+(original.A*matrix[13])+matrix[14]);
-        original.A=((original.R*matrix[15])+(original.G*matrix[16])+(original.B*matrix[17])+(original.A*matrix[18])+matrix[19]);
+        original.R=Math.round((original.R*matrix[0]) +(original.G*matrix[1]) +(original.B*matrix[2]) +(original.A*matrix[3]) +matrix[4]);
+        original.G=Math.round((original.R*matrix[5]) +(original.G*matrix[6]) +(original.B*matrix[7]) +(original.A*matrix[8]) +matrix[9]);
+        original.B=Math.round((original.R*matrix[10])+(original.G*matrix[11])+(original.B*matrix[12])+(original.A*matrix[13])+matrix[14]);
+        original.A=Math.round((original.R*matrix[15])+(original.G*matrix[16])+(original.B*matrix[17])+(original.A*matrix[18])+matrix[19]);
         return this.ensureOutputColorIsValid(original);
     }
 
