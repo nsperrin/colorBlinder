@@ -183,18 +183,12 @@ describe('Tests for /javascripts/colorConvert.js', function() {
             done();
         });
 
-        it('If given []size 25 ensureIsValidColorAttribute is called 25 times', function(done){
-            spyOn(colorBlinder, 'ensureIsValidColorAttribute');
-            colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Normal']);
-            expect(colorBlinder.ensureIsValidColorAttribute.calls.count()).toBe(25);
-            colorBlinder.ensureIsValidColorAttribute.calls.reset();
-            done();
-        });
 
         it('If given []size 25 it returns a valid matrix', function(done){
             var expected = [0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0];
             var input=[-1,-1,-1,-1,-1,  -1,-1,-1,-1,-1,  -1,-1,-1,-1,-1,  -1,-1,-1,-1,-1,  -1,-1,-1,-1,-1];
             expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(input))).toEqual(JSON.stringify(expected));
+            console.log(colorBlinder.blindness['Normal']);
             done();
         });
 
@@ -253,10 +247,6 @@ describe('Tests for /javascripts/colorConvert.js', function() {
         });
     });
 
-    describe('Tests generateNewColor', function(){});
-
-
-
     describe('Tests convert', function(){
         it('Calls ensureInputColorIsValid once', function(done){
             spyOn(colorBlinder, 'ensureInputColorIsValid');
@@ -274,15 +264,169 @@ describe('Tests for /javascripts/colorConvert.js', function() {
             done();
         });
 
-         it('Calls generateNewColor once', function(done){
-             for(var i=0;i<1000; i++) {
-                 spyOn(colorBlinder, 'generateNewColor');
-                 colorBlinder.convert({R: 256, G: 256, B: 256}, 25);
-                 expect(colorBlinder.generateNewColor.calls.count()).toBe(1);
-                 expect(colorBlinder.generateNewColor).toHaveBeenCalledWith({R: 255, G: 255, B: 255}, colorBlinder.blindness['Normal']);
-                 colorBlinder.generateNewColor.calls.reset();
-                 done();
-             }
-         });
+        it('Calls generateNewColor once', function(done){
+            for(var i=0;i<1000; i++) {
+                spyOn(colorBlinder, 'generateNewColor');
+                colorBlinder.convert({R: 256, G: 256, B: 256}, 25);
+                expect(colorBlinder.generateNewColor.calls.count()).toBe(1);
+                expect(colorBlinder.generateNewColor).toHaveBeenCalledWith({R: 255, G: 255, B: 255}, colorBlinder.blindness['Normal']);
+                colorBlinder.generateNewColor.calls.reset();
+                done();
+            }
+        });
+    });
+
+    describe('Tests generateNewColor', function(){
+        var start = 0;
+        var sampleSize=1;
+        var input=[
+            {R:255,G:255,B:255},{R:255,G:255,B:128},{R:255,G:128,B:128},
+            {R:255,G:128,B:255},{R:128,G:128,B:255},{R:128,G:255,B:255},
+            {R:128,G:255,B:128},{R:128,G:128,B:128}
+        ];
+        var normal=[
+            {R:255,G:255,B:255},{R:255,G:255,B:128},{R:255,G:128,B:128},
+            {R:255,G:128,B:255},{R:128,G:128,B:255},{R:128,G:255,B:255},
+            {R:128,G:255,B:128},{R:128,G:128,B:128}
+        ];
+        var protanopia=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var protanomaly=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var deuteranopia=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var deuteranomaly=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var tritanopia=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var tritanomaly=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var achromatopsia=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+        var achromatomaly=[
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255},{R:255,G:255,B:255},
+            {R:255,G:255,B:255},{R:255,G:255,B:255}
+        ];
+
+        it('calls ensureOutputColorIsValid once', function(done){
+            spyOn(colorBlinder, 'ensureOutputColorIsValid');
+            colorBlinder.convert({R: 255, G: 255, B: 255}, colorBlinder.blindness['Normal']);
+            expect(colorBlinder.ensureOutputColorIsValid.calls.count()).toBe(1);
+            expect(colorBlinder.ensureOutputColorIsValid).toHaveBeenCalledWith({R:255,G:255,B:255,A:255});
+            colorBlinder.ensureOutputColorIsValid.calls.reset();
+            done();
+        });
+
+        it('Normal', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Normal']);
+                expect(out.R).toEqual(normal[i].R);
+                expect(out.G).toEqual(normal[i].G);
+                expect(out.B).toEqual(normal[i].B);
+            }
+            done();
+        });
+
+        it('Protanopia', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Protanopia']);
+                expect(out.R).toEqual(protanopia[i].R);
+                expect(out.G).toEqual(protanopia[i].G);
+                expect(out.B).toEqual(protanopia[i].B);
+            }
+            done();
+        });
+
+        it('Protanomaly', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Protanomaly']);
+                expect(out.R).toEqual(protanomaly[i].R);
+                expect(out.G).toEqual(protanomaly[i].G);
+                expect(out.B).toEqual(protanomaly[i].B);
+            }
+            done();
+        });
+
+        it('Deuteranopia', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Deuteranopia']);
+                expect(out.R).toEqual(deuteranopia[i].R);
+                expect(out.G).toEqual(deuteranopia[i].G);
+                expect(out.B).toEqual(deuteranopia[i].B);
+            }
+            done();
+        });
+
+        it('Deuteranomaly', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Deuteranomaly']);
+                expect(out.R).toEqual(deuteranomaly[i].R);
+                expect(out.G).toEqual(deuteranomaly[i].G);
+                expect(out.B).toEqual(deuteranomaly[i].B);
+            }
+            done();
+        });
+
+        it('Tritanopia', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Tritanopia']);
+                expect(out.R).toEqual(tritanopia[i].R);
+                expect(out.G).toEqual(tritanopia[i].G);
+                expect(out.B).toEqual(tritanopia[i].B);
+            }
+            done();
+        });
+
+        it('Tritanomaly', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Tritanomaly']);
+                expect(out.R).toEqual(tritanomaly[i].R);
+                expect(out.G).toEqual(tritanomaly[i].G);
+                expect(out.B).toEqual(tritanomaly[i].B);
+            }
+            done();
+        });
+
+        it('Achromatopsia', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Achromatopsia']);
+                expect(out.R).toEqual(achromatopsia[i].R);
+                expect(out.G).toEqual(achromatopsia[i].G);
+                expect(out.B).toEqual(achromatopsia[i].B);
+            }
+            done();
+        });
+
+        it('Achromatomaly', function(done){
+            for(var i=start; i<sampleSize; i++){
+                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Achromatomaly']);
+                expect(out.R).toEqual(achromatomaly[i].R);
+                expect(out.G).toEqual(achromatomaly[i].G);
+                expect(out.B).toEqual(achromatomaly[i].B);
+            }
+            done();
+        });
     });
 });

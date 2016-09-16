@@ -86,10 +86,16 @@ colorBlinder = {
 
     ensureMatrixIsValid:function(matrix){
         if(typeof matrix == typeof [] && matrix.length === 25){
-            for(var i=0; i<25; i++){
-                matrix[i] = this.ensureIsValidColorAttribute(matrix[i]);
+            for(var i=0; i<255;i++) {
+                if (matrix[i] < 0) {
+                    matrix[i] = 0;
+                }
+                if (matrix[i] > 255) {
+                    matrix[i] = 255;
+                }
             }
             return matrix;
+
         }else{
             return this.blindness['Normal'];
         }
@@ -102,11 +108,12 @@ colorBlinder = {
     },
 
     generateNewColor:function(original, matrix){
-        var r=((original.R*matrix[0]) +(original.G*matrix[1]) +(original.B*matrix[2]) +(original.A*matrix[3]) +matrix[4]);
-        var g=((original.R*matrix[5]) +(original.G*matrix[6]) +(original.B*matrix[7]) +(original.A*matrix[8]) +matrix[9]);
-        var b=((original.R*matrix[10])+(original.G*matrix[11])+(original.B*matrix[12])+(original.A*matrix[13])+matrix[14]);
-        var a=((original.R*matrix[15])+(original.G*matrix[16])+(original.B*matrix[17])+(original.A*matrix[18])+matrix[19]);
-        return this.ensureOutputColorIsValid({R:r,G:g,B:b,A:a});
+        original.A = original.A || 255;
+        original.R=((original.R*matrix[0]) +(original.G*matrix[1]) +(original.B*matrix[2]) +(original.A*matrix[3]) +matrix[4]);
+        original.G=((original.R*matrix[5]) +(original.G*matrix[6]) +(original.B*matrix[7]) +(original.A*matrix[8]) +matrix[9]);
+        original.B=((original.R*matrix[10])+(original.G*matrix[11])+(original.B*matrix[12])+(original.A*matrix[13])+matrix[14]);
+        original.A=((original.R*matrix[15])+(original.G*matrix[16])+(original.B*matrix[17])+(original.A*matrix[18])+matrix[19]);
+        return this.ensureOutputColorIsValid(original);
     }
 
 
