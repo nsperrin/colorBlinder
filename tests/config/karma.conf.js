@@ -6,6 +6,14 @@ module.exports = function(config) {
         basePath: '../..',
         frameworks: ['jasmine'],
         files: [
+            'External_Libraries/*.js',
+            'public/javascripts/angular/ui-routing.js',
+            'public/javascripts/angular/changeInterpolation.js',
+            'public/javascripts/angular/enableHTML5.js',
+            'public/javascripts/angular/app.js',
+            'public/javascripts/angular/masterController.js',
+            'public/javascripts/angular/unverifiedHeader/loginForm/loginFormDirective.js',
+            'public/javascripts/angular/unverifiedHeader/signUpForm/signUpFormDirective.js',
             'public/javascripts/*.js',
             'tests/karma-jasmine/*.js'
         ],
