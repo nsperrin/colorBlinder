@@ -1,16 +1,20 @@
 <div id="signUpForm" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-2 pull-right">
     <form class="form-signin">
         <div class="centerTextCont"><h2 class="form-signin-heading">Welcome to ColorBlinder</h2></div>
+
         <label for="inputEmail" class="sr-only">Enter your Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Enter your Email" required autofocus>
+        <input type="email" id="inputEmail" ng-model="signUpInfo.email" class="form-control" placeholder="Enter your Email" required autofocus>
+
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" ng-model="signUpInfo.pass" class="form-control" placeholder="Password" required>
+
         <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
-        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm password" required>
-        <button class="btn btn-md btn-primary pull-right" type="submit">Sign Up</button>
+        <input type="password" id="inputConfirmPassword" ng-model="signUpInfo.pass2" class="form-control" placeholder="Confirm password" required>
+
+        <button class="btn btn-md btn-primary pull-right" type="submit" ng-click="signUp()">Sign Up</button>
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="remember-me"> Send me occasional email updates
+                <input type="checkbox" ng-model="signUpInfo.rememberMe"> Send me occasional email updates
             </label>
         </div>
     </form>

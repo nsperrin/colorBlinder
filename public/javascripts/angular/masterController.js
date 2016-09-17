@@ -13,6 +13,12 @@ colorBlinder.controller('master', ['$scope', function($scope) {
         pass:'',
         rememberMe:false
     };
+    $scope.signUpInfo = {
+        email:'',
+        pass:'',
+        pass2:'',
+        rememberMe:false
+    };
 
     $scope.displaySignUp = function(){
         if($scope.currentState !== $scope.STATES.SIGNUP){
@@ -31,13 +37,15 @@ colorBlinder.controller('master', ['$scope', function($scope) {
     };
 
     $scope.logout = function(){
-        console.log('logout');
+        $scope.socket.emit('logout');
     };
 
 
     $scope.login = function(){
-        $scope.socket.emit('loginAuth', $scope.loginCreds);
+        $scope.socket.emit('login', $scope.loginCreds);
     }
 
-
+    $scope.signUp = function(){
+        $scope.socket.emit('signUp', $scope.signUpInfo);
+    }
 }]);
