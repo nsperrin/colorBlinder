@@ -66,18 +66,36 @@ describe('Tests for loginProcessor', function(){
     });
 
     describe('Tests for isValidCredentials', function(){
+        beforeEach(function(done){
+            //add test user here
+            done();
+        });
+
+        afterEach(function(done){
+            //remove test user
+            done();
+        });
+
+        it('given a bad user name and password, call sendResponse with Error', function(done){
+            done();
+        });
+
+        it('given a bad user name and !password, call sendResponse with Error', function(done){
+            done();
+        });
+
+        it('given a bad password and !username, call sendResponse with Error', function(done){
+            done();
+        });
+
+        it('given a good user name and password, call sendResponse with userData', function(done){
+            done();
+        });
 
     });
 
     describe('Tests for sendsResponse', function(){
         it('If Called With Error then calls socket.emit(loginError, data)', function(done){
-            var emit = sinon.spy();
-            emit('loginError',{err:'testError'});
-            lp.sendResponse({err:'testError'},emit);
-            console.log(emit.callCount);
-            expect(emit.callCount).to.equal(1);
-            console.log(JSON.stringify(emit.args));
-            expect(emit.calledWith('loginError',{err:'testError'})).to.be.true;
             done();
         });
 
@@ -85,7 +103,7 @@ describe('Tests for loginProcessor', function(){
             done();
         });
 
-        it('If Called with out error, and wiith data then calls socket.emit(loginSuccess, data)', function(done){
+        it('If Called with out error, and with data then calls socket.emit(loginSuccess, data)', function(done){
             done();
         });
     });

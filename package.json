@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "karmaTest": "./node_modules/.bin/karma start tests/config/karma.conf.js",
-    "mochaTest": "./node_modules/.bin/_mocha tests/mocha-chai/",
-    "allTest":"npm run mochaTest && npm run karmaTest"
+    "karmaTests": "./node_modules/.bin/karma start tests/config/karma.conf.js",
+    "mochaTests": "./node_modules/.bin/_mocha tests/mocha-chai/",
+    "allTests":"npm run mochaTest && npm run karmaTest"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
