@@ -17,68 +17,23 @@ describe('Tests for /javascripts/colorConvert.js', function() {
             Achromatomaly: [.618, .32, .062, 0, 0, .163, .775, .062, 0, 0, .163, .32, .516, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1]
         };
 
-        it('Normal',function(done){
-            expect(typeof colorBlinder.blindness['Normal']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Normal'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Normal'])).toEqual(JSON.stringify(expectedData['Normal']));
-            done();
-        });
+        var names = [
+            'Normal', 'Protanopia', 'Protanomaly', 'Deuteranopia',
+            'Deuteranomaly', 'Tritanopia', 'Tritanomaly', 'Achromatopsia',
+            'Achromatomaly'];
 
-        it('Protanopia',function(done){
-            expect(typeof colorBlinder.blindness['Protanopia']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Protanopia'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Protanopia'])).toEqual(JSON.stringify(expectedData['Protanopia']));
-            done()
-        });
+        function testRetrieval(input){
+            it('I can retrieve colorBlinder.blindness\''+input+'\'',function(done){
+                expect(typeof colorBlinder.blindness[input]).toEqual(typeof []);
+                expect(colorBlinder.blindness[input].length).toEqual(25);
+                expect(JSON.stringify(colorBlinder.blindness[input])).toEqual(JSON.stringify(expectedData[input]));
+                done();
+            });
+        }
 
-        it('Protanomaly',function(done){
-            expect(typeof colorBlinder.blindness['Protanomaly']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Protanomaly'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Protanomaly'])).toEqual(JSON.stringify(expectedData['Protanomaly']));
-            done();
-        });
-
-        it('Deuteranopia',function(done){
-            expect(typeof colorBlinder.blindness['Deuteranopia']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Deuteranopia'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Deuteranopia'])).toEqual(JSON.stringify(expectedData['Deuteranopia']));
-            done();
-        });
-
-        it('Deuteranomaly',function(done){
-            expect(typeof colorBlinder.blindness['Deuteranomaly']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Deuteranomaly'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Deuteranomaly'])).toEqual(JSON.stringify(expectedData['Deuteranomaly']));
-            done();
-        });
-
-        it('Tritanopia',function(done){
-            expect(typeof colorBlinder.blindness['Tritanopia']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Tritanopia'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Tritanopia'])).toEqual(JSON.stringify(expectedData['Tritanopia']));
-            done();
-        });
-
-        it('Tritanomaly',function(done){
-            expect(typeof colorBlinder.blindness['Tritanomaly']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Tritanomaly'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Tritanomaly'])).toEqual(JSON.stringify(expectedData['Tritanomaly']));
-            done();
-        });
-
-        it('Achromatopsia',function(done){
-            expect(typeof colorBlinder.blindness['Achromatopsia']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Achromatopsia'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Achromatopsia'])).toEqual(JSON.stringify(expectedData['Achromatopsia']));
-            done();
-        });
-
-        it('Achromatomaly',function(done){
-            expect(typeof colorBlinder.blindness['Achromatomaly']).toEqual(typeof []);
-            expect(colorBlinder.blindness['Achromatomaly'].length).toEqual(25);
-            expect(JSON.stringify(colorBlinder.blindness['Achromatomaly'])).toEqual(JSON.stringify(expectedData['Achromatomaly']));
-            done();
-        });
+        for(var i=0;i<names.length;i++) {
+            testRetrieval(names[i]);
+        }
     });
 
     describe('Tests for ensureIsValidColorAttribute',function() {
@@ -193,59 +148,22 @@ describe('Tests for /javascripts/colorConvert.js', function() {
             done();
         });
 
-        it('If given a colorBlinder.blindess["Normal"] it returns it', function(done) {
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Normal'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Normal']));
-            done();
-        });
+        var names = [
+            'Normal', 'Protanopia', 'Protanomaly', 'Deuteranopia',
+            'Deuteranomaly', 'Tritanopia', 'Tritanomaly', 'Achromatopsia',
+            'Achromatomaly'];
 
-        it('If given a colorBlinder.blindess["Protanopia"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Protanopia'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Protanopia']));
-            done();
-        });
+        function testMatrixRetrieval(input){
+            it('If given a colorBlinder.blindess[\''+input+'\'] it returns it', function(done) {
+                expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness[input])))
+                    .toEqual(JSON.stringify(colorBlinder.blindness[input]));
+                done();
+            });
+        }
 
-        it('If given a colorBlinder.blindess["Protanomaly"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Protanomaly'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Protanomaly']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Deuteranopia"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Deuteranopia'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Deuteranopia']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Deuteranomaly"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Deuteranomaly'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Deuteranomaly']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Tritanopia"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Tritanopia'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Tritanopia']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Tritanomaly"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Tritanomaly'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Tritanomaly']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Achromatopsia"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Achromatopsia'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Achromatopsia']));
-            done();
-        });
-
-        it('If given a colorBlinder.blindess["Achromatomaly"] it returns it', function(done){
-            expect(JSON.stringify(colorBlinder.ensureMatrixIsValid(colorBlinder.blindness['Achromatomaly'])))
-                .toEqual(JSON.stringify(colorBlinder.blindness['Achromatomaly']));
-            done();
-        });
+        for(var i=0; i<names.length;i++){
+            testMatrixRetrieval(names[i]);
+        }
     });
 
     describe('Tests convert', function(){
@@ -277,150 +195,95 @@ describe('Tests for /javascripts/colorConvert.js', function() {
         });
     });
 
-    describe('Tests generateNewColor', function(){
+    describe('Tests generateNewColor', function() {
         var start = 0;
-        var sampleSize=8;
-        var input=[
-            {R:255,G:255,B:255},{R:255,G:255,B:128},{R:255,G:128,B:128},
-            {R:255,G:128,B:255},{R:128,G:128,B:255},{R:128,G:255,B:255},
-            {R:128,G:255,B:128},{R:128,G:128,B:128}
+        var sampleSize = 8;
+        var input = [
+            {R: 255, G: 255, B: 255}, {R: 255, G: 255, B: 128}, {R: 255, G: 128, B: 128},
+            {R: 255, G: 128, B: 255}, {R: 128, G: 128, B: 255}, {R: 128, G: 255, B: 255},
+            {R: 128, G: 255, B: 128}, {R: 128, G: 128, B: 128}
         ];
-        var normal=[
-            {"R":255,"G":255,"B":255,"A":255}, {"R":255,"G":255,"B":128,"A":255},
-            {"R":255,"G":128,"B":128,"A":255}, {"R":255,"G":128,"B":255,"A":255},
-            {"R":128,"G":128,"B":255,"A":255}, {"R":128,"G":255,"B":255,"A":255},
-            {"R":128,"G":255,"B":128,"A":255}, {"R":128,"G":128,"B":128,"A":255}
+        var normal = [
+            {"R": 255, "G": 255, "B": 255, "A": 255}, {"R": 255, "G": 255, "B": 128, "A": 255},
+            {"R": 255, "G": 128, "B": 128, "A": 255}, {"R": 255, "G": 128, "B": 255, "A": 255},
+            {"R": 128, "G": 128, "B": 255, "A": 255}, {"R": 128, "G": 255, "B": 255, "A": 255},
+            {"R": 128, "G": 255, "B": 128, "A": 255}, {"R": 128, "G": 128, "B": 128, "A": 255}
         ];
-        var protanopia=[
-            {"R":255,"G":255,"B":255,"A":255}, {"R":255,"G":255,"B":159,"A":255},
-            {"R":200,"G":168,"B":138,"A":255}, {"R":200,"G":168,"B":234,"A":255},
-            {"R":128,"G":128,"B":224,"A":255}, {"R":183,"G":215,"B":245,"A":255},
-            {"R":183,"G":215,"B":149,"A":255}, {"R":128,"G":128,"B":128,"A":255}
+        var protanopia = [
+            {"R": 255, "G": 255, "B": 255, "A": 255}, {"R": 255, "G": 255, "B": 159, "A": 255},
+            {"R": 200, "G": 168, "B": 138, "A": 255}, {"R": 200, "G": 168, "B": 234, "A": 255},
+            {"R": 128, "G": 128, "B": 224, "A": 255}, {"R": 183, "G": 215, "B": 245, "A": 255},
+            {"R": 183, "G": 215, "B": 149, "A": 255}, {"R": 128, "G": 128, "B": 128, "A": 255}
         ];
-        var protanomaly=[
-            {"R":255,"G":255,"B":255,"A":255}, {"R":255,"G":255,"B":144,"A":255},
-            {"R":232,"G":163,"B":132,"A":255}, {"R":232,"G":163,"B":244,"A":255},
-            {"R":128,"G":128,"B":239,"A":255}, {"R":151,"G":220,"B":251,"A":255},
-            {"R":151,"G":220,"B":140,"A":255}, {"R":128,"G":128,"B":128,"A":255}
+        var protanomaly = [
+            {"R": 255, "G": 255, "B": 255, "A": 255}, {"R": 255, "G": 255, "B": 144, "A": 255},
+            {"R": 232, "G": 163, "B": 132, "A": 255}, {"R": 232, "G": 163, "B": 244, "A": 255},
+            {"R": 128, "G": 128, "B": 239, "A": 255}, {"R": 151, "G": 220, "B": 251, "A": 255},
+            {"R": 151, "G": 220, "B": 140, "A": 255}, {"R": 128, "G": 128, "B": 128, "A": 255}
         ];
-        var deuteranopia=[
-            {"R":255,"G":255,"B":255,"A":255}, {"R":255,"G":255,"B":166,"A":255},
-            {"R":207,"G":183,"B":145,"A":255}, {"R":207,"G":183,"B":233,"A":255},
-            {"R":128,"G":128,"B":217,"A":255}, {"R":176,"G":200,"B":239,"A":255},
-            {"R":176,"G":200,"B":150,"A":255}, {"R":128,"G":128,"B":128,"A":255}
+        var deuteranopia = [
+            {"R": 255, "G": 255, "B": 255, "A": 255}, {"R": 255, "G": 255, "B": 166, "A": 255},
+            {"R": 207, "G": 183, "B": 145, "A": 255}, {"R": 207, "G": 183, "B": 233, "A": 255},
+            {"R": 128, "G": 128, "B": 217, "A": 255}, {"R": 176, "G": 200, "B": 239, "A": 255},
+            {"R": 176, "G": 200, "B": 150, "A": 255}, {"R": 128, "G": 128, "B": 128, "A": 255}
 
         ];
-        var deuteranomaly=[
-            {"R":255,"G":255,"B":255,"A":255}, {"R":255,"G":255,"B":146,"A":255},
-            {"R":230,"G":154,"B":132,"A":255}, {"R":230,"G":154,"B":241,"A":255},
-            {"R":128,"G":128,"B":237,"A":255}, {"R":153,"G":229,"B":251,"A":255},
-            {"R":153,"G":229,"B":142,"A":255}, {"R":128,"G":128,"B":128,"A":255}
+        var deuteranomaly = [
+            {"R": 255, "G": 255, "B": 255, "A": 255}, {"R": 255, "G": 255, "B": 146, "A": 255},
+            {"R": 230, "G": 154, "B": 132, "A": 255}, {"R": 230, "G": 154, "B": 241, "A": 255},
+            {"R": 128, "G": 128, "B": 237, "A": 255}, {"R": 153, "G": 229, "B": 251, "A": 255},
+            {"R": 153, "G": 229, "B": 142, "A": 255}, {"R": 128, "G": 128, "B": 128, "A": 255}
         ];
-        var tritanopia=[
+        var tritanopia = [
             {R: 255, G: 255, B: 255, A: 255}, {R: 255, G: 183, B: 154, A: 255},
             {R: 249, G: 128, B: 128, A: 255}, {R: 249, G: 200, B: 229, A: 255},
             {R: 128, G: 200, B: 229, A: 255}, {R: 134, G: 255, B: 255, A: 255},
             {R: 134, G: 183, B: 154, A: 255}, {R: 128, G: 128, B: 128, A: 255}
         ];
-        var tritanomaly=[
+        var tritanomaly = [
             {R: 255, G: 255, B: 255, A: 255}, {R: 255, G: 221, B: 145, A: 255},
             {R: 251, G: 128, B: 128, A: 255}, {R: 251, G: 162, B: 238, A: 255},
             {R: 128, G: 162, B: 238, A: 255}, {R: 132, G: 255, B: 255, A: 255},
             {R: 132, G: 221, B: 145, A: 255}, {R: 128, G: 128, B: 128, A: 255}
 
         ];
-        var achromatopsia=[
+        var achromatopsia = [
             {R: 255, G: 255, B: 255, A: 255}, {R: 241, G: 236, B: 225, A: 255},
             {R: 166, G: 139, B: 146, A: 255}, {R: 180, G: 158, B: 176, A: 255},
             {R: 142, G: 147, B: 158, A: 255}, {R: 217, G: 244, B: 237, A: 255},
             {R: 203, G: 225, B: 207, A: 255}, {R: 128, G: 128, B: 128, A: 255}
         ];
-        var achromatomaly=[
+        var achromatomaly = [
             {R: 255, G: 255, B: 255, A: 255}, {R: 247, G: 246, B: 185, A: 255},
             {R: 206, G: 141, B: 145, A: 255}, {R: 214, G: 150, B: 214, A: 255},
             {R: 136, G: 137, B: 198, A: 255}, {R: 177, G: 242, B: 238, A: 255},
             {R: 169, G: 233, B: 168, A: 255}, {R: 128, G: 128, B: 128, A: 255}
         ];
+        var expected = {input:input,Normal:normal,
+            Protanopia:protanopia,Protanomaly:protanomaly,
+            Deuteranopia:deuteranopia,Deuteranomaly:deuteranomaly,
+            Tritanopia:tritanopia,Tritanomaly:tritanomaly,
+            Achromatopsia:achromatopsia,Achromatomaly:achromatomaly};
 
-        it('calls ensureOutputColorIsValid once', function(done){
-            spyOn(colorBlinder, 'ensureOutputColorIsValid');
-            colorBlinder.convert({R: 255, G: 255, B: 255}, colorBlinder.blindness['Normal']);
-            expect(colorBlinder.ensureOutputColorIsValid.calls.count()).toBe(1);
-            expect(colorBlinder.ensureOutputColorIsValid).toHaveBeenCalledWith({R:255,G:255,B:255,A:255});
-            colorBlinder.ensureOutputColorIsValid.calls.reset();
-            done();
-        });
+            var names = [
+            'Normal', 'Protanopia', 'Protanomaly', 'Deuteranopia',
+            'Deuteranomaly', 'Tritanopia', 'Tritanomaly', 'Achromatopsia',
+            'Achromatomaly'
+        ];
 
-        it('Normal', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Normal']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(normal[i]));
-            }
-            done();
-        });
+        function testsThatConvertOutputIsValid(ins){
+            it('Input Test for '+ins, function(done){
+                for(var i=start; i<sampleSize; i++){
+                    var out = colorBlinder.convert(expected.input[i],colorBlinder.blindness[ins]);
+                    expect(JSON.stringify(out)).toEqual(JSON.stringify(expected[ins][i]));
+                }
+                done();
+            });
+        }
 
-        it('Protanopia', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Protanopia']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(protanopia[i]));
-            }
-            done();
-        });
+        for(var i=0;i<names.length;i++){
+            testsThatConvertOutputIsValid(names[i]);
+        }
 
-         it('Protanomaly', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Protanomaly']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(protanomaly[i]));
-            }
-            done();
-        });
-
-        it('Deuteranopia', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Deuteranopia']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(deuteranopia[i]));
-            }
-            done();
-        });
-
-        it('Deuteranomaly', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Deuteranomaly']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(deuteranomaly[i]));
-            }
-            done();
-        });
-
-        it('Tritanopia', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Tritanopia']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(tritanopia[i]));
-            }
-            done();
-        });
-
-        it('Tritanomaly', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Tritanomaly']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(tritanomaly[i]));
-            }
-            done();
-        });
-
-        it('Achromatopsia', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Achromatopsia']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(achromatopsia[i]));
-            }
-            done();
-        });
-
-        it('Achromatomaly', function(done){
-            for(var i=start; i<sampleSize; i++){
-                var out = colorBlinder.convert(input[i],colorBlinder.blindness['Achromatomaly']);
-                expect(JSON.stringify(out)).toEqual(JSON.stringify(achromatomaly[i]));
-            }
-            done();
-        });
     });
 });
