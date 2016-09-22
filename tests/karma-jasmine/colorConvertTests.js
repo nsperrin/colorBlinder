@@ -93,7 +93,7 @@ describe('Tests for /javascripts/colorConvert.js', function() {
         });
 
         it('all from zero through 255', function (done) {
-            for(var i=0; i>256; i++) {
+            for(var i=0; i<256; i++) {
                 expect(colorBlinder.ensureIsValidColorAttribute(i)).toEqual(i);
             }
             done();
