@@ -259,173 +259,173 @@ describe('Tests for state machine', function(){
         });
     });
     describe('uCreate', function(){
-        it('---'+('home'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('home'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uCreate', 'home', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('view'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('view'+'-----').substring(0,9)+'--->uView', function(done){
             sm.getNext('uCreate', 'view', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uView');
                 done();
             });
         });
-        it('---'+('create'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('create'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'create', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreate', 'login', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('signup'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('signup'+'-----').substring(0,9)+'--->uCreateSignUp', function(done){
             sm.getNext('uCreate', 'signup', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateSignUp');
                 done();
             });
         });
-        it('---'+('logout'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('logout'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'logout', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('save'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('save'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreate', 'save', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('saveAs'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('saveAs'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreate', 'saveAs', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('delete'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('delete'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'delete', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('myColors'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('myColors'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'myColors', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('share'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('share'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreate', 'share', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('cancel'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('cancel'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uCreate', 'cancel', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('success'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('success'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'success', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('failure'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('failure'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreate', 'failure', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
     });
     describe('uCreateLogin', function(){
-        it('---'+('home'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('home'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uCreateLogin', 'home', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('view'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('view'+'-----').substring(0,9)+'--->uView', function(done){
             sm.getNext('uCreateLogin', 'view', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uView');
                 done();
             });
         });
-        it('---'+('create'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('create'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreateLogin', 'create', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreateLogin', 'login', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('signup'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('signup'+'-----').substring(0,9)+'--->uCreateSignUp', function(done){
             sm.getNext('uCreateLogin', 'signup', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateSignUp');
                 done();
             });
         });
-        it('---'+('logout'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('logout'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'logout', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('save'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('save'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'save', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('saveAs'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('saveAs'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'saveAs', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('delete'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('delete'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'delete', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('myColors'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('myColors'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'myColors', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('share'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('share'+'-----').substring(0,9)+'--->uCreateLogin', function(done){
             sm.getNext('uCreateLogin', 'share', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
-        it('---'+('cancel'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('cancel'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uCreateLogin', 'cancel', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('success'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('success'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('uCreateLogin', 'success', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('failure'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('failure'+'-----').substring(0,9)+'--->uCreateSignUp', function(done){
             sm.getNext('uCreateLogin', 'failure', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreateLogin');
                 done();
             });
         });
