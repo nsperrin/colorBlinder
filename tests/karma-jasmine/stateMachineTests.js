@@ -105,9 +105,9 @@ describe('Tests for state machine', function(){
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->uHomeLogin', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uHomeLogin', 'login', function(newState) {
-                expect(newState).toEqual('uHomeLogin');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
@@ -173,87 +173,87 @@ describe('Tests for state machine', function(){
         });
     });
     describe('uHomeSignUp', function(){
-        it('---'+('home'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('home'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uHomeSignUp', 'home', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('view'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('view'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'view', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('create'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('create'+'-----').substring(0,9)+'--->uCreate', function(done){
             sm.getNext('uHomeSignUp', 'create', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uCreate');
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->uHomeLogin', function(done){
             sm.getNext('uHomeSignUp', 'login', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeLogin');
                 done();
             });
         });
-        it('---'+('signup'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('signup'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uHomeSignUp', 'signup', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('logout'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('logout'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'logout', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('save'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('save'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'save', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('saveAs'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('saveAs'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'saveAs', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('delete'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('delete'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'delete', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('myColors'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('myColors'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'myColors', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('share'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('share'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'share', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
-        it('---'+('cancel'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('cancel'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('uHomeSignUp', 'cancel', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('success'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('success'+'-----').substring(0,9)+'--->vHome', function(done){
             sm.getNext('uHomeSignUp', 'success', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vHome');
                 done();
             });
         });
-        it('---'+('failure'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('failure'+'-----').substring(0,9)+'--->uHomeSignUp', function(done){
             sm.getNext('uHomeSignUp', 'failure', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHomeSignUp');
                 done();
             });
         });
