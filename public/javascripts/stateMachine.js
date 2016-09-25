@@ -6,7 +6,7 @@ function stateMachine(){
     tsd = {
         uHome : {
             home      : "uHome",
-            view      : "uView",
+            view      : "uHome",
             create    : "uCreate",
             login     : "uHomeLogin",
             signup    : "uHomeSignUp",
@@ -21,20 +21,20 @@ function stateMachine(){
             failure   : "uHome"
         },
         uHomeLogin : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
+            home      : "uHome",
+            view      : "uHomeLogin",
+            create    : "uCreate",
+            login     : "uHomeLogin",
+            signup    : "uHomeSignUp",
+            logout    : "uHomeLogin",
+            save      : "uHomeLogin",
+            saveAs    : "uHomeLogin",
+            delete    : "uHomeLogin",
+            myColors  : "uHomeLogin",
+            share     : "uHomeLogin",
+            cancel    : "uHome",
+            success   : "vHome",
+            failure   : "uHomeLogin"
         },
         uHomeSignUp : {
             home      : "",
