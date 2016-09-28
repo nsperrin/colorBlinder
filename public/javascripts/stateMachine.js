@@ -198,7 +198,7 @@ function stateMachine(){
         },
         vMyColorsLogout : {
             home      : "vHome",
-            view      : "vMyHome",
+            view      : "vHome",
             create    : "vCreate",
             login     : "vMyColorsLogout",
             signup    : "vMyColorsLogout",
@@ -213,7 +213,7 @@ function stateMachine(){
             failure   : "vMyColorsLogout"
         },
         vMyColorsDelete : {
-            home      : "vMyColors",
+            home      : "vHome",
             view      : "vMyColor",
             create    : "vCreate",
             login     : "vMyColorsDelete",
