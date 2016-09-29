@@ -1205,173 +1205,173 @@ describe('Tests for state machine', function(){
         });
     });
     describe('vCreate', function(){
-        it('---'+('home'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('home'+'-----').substring(0,9)+'--->vHome', function(done){
             sm.getNext('vCreate', 'home', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vHome');
                 done();
             });
         });
-        it('---'+('view'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('view'+'-----').substring(0,9)+'--->vView', function(done){
             sm.getNext('vCreate', 'view', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vView');
                 done();
             });
         });
-        it('---'+('create'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('create'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'create', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'login', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('signup'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('signup'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'signup', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('logout'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('logout'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'logout', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('save'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('save'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'save', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('saveAs'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('saveAs'+'-----').substring(0,9)+'--->vCreateSaveAs', function(done){
             sm.getNext('vCreate', 'saveAs', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreateSaveAs');
                 done();
             });
         });
-        it('---'+('delete'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('delete'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'delete', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('myColors'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('myColors'+'-----').substring(0,9)+'--->vMyColors', function(done){
             sm.getNext('vCreate', 'myColors', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vMyColors');
                 done();
             });
         });
-        it('---'+('share'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('share'+'-----').substring(0,9)+'--->vCreateShare', function(done){
             sm.getNext('vCreate', 'share', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreateShare');
                 done();
             });
         });
-        it('---'+('cancel'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('cancel'+'-----').substring(0,9)+'--->vMyColors', function(done){
             sm.getNext('vCreate', 'cancel', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vMyColors');
                 done();
             });
         });
-        it('---'+('success'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('success'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'success', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('failure'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('failure'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreate', 'failure', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
     });
     describe('vCreateLogout', function(){
-        it('---'+('home'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('home'+'-----').substring(0,9)+'--->vHome', function(done){
             sm.getNext('vCreateLogout', 'home', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vHome');
                 done();
             });
         });
-        it('---'+('view'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('view'+'-----').substring(0,9)+'--->vView', function(done){
             sm.getNext('vCreateLogout', 'view', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vView');
                 done();
             });
         });
-        it('---'+('create'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('create'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'create', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('login'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('login'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'login', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('signup'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('signup'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'signup', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('logout'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('logout'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'logout', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('save'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('save'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'save', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('saveAs'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('saveAs'+'-----').substring(0,9)+'--->vCreateSaveAs', function(done){
             sm.getNext('vCreateLogout', 'saveAs', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreateSaveAs');
                 done();
             });
         });
-        it('---'+('delete'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('delete'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'delete', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('myColors'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('myColors'+'-----').substring(0,9)+'--->vMyColors', function(done){
             sm.getNext('vCreateLogout', 'myColors', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vMyColors');
                 done();
             });
         });
-        it('---'+('share'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('share'+'-----').substring(0,9)+'--->vCreateShare', function(done){
             sm.getNext('vCreateLogout', 'share', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreateShare');
                 done();
             });
         });
-        it('---'+('cancel'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('cancel'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'cancel', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
-        it('---'+('success'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('success'+'-----').substring(0,9)+'--->uHome', function(done){
             sm.getNext('vCreateLogout', 'success', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('uHome');
                 done();
             });
         });
-        it('---'+('failure'+'-----').substring(0,9)+'--->', function(done){
+        it('---'+('failure'+'-----').substring(0,9)+'--->vCreate', function(done){
             sm.getNext('vCreateLogout', 'failure', function(newState) {
-                expect(newState).toEqual('');
+                expect(newState).toEqual('vCreate');
                 done();
             });
         });
