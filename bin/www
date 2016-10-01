@@ -37,7 +37,7 @@ var session = require("express-session")({
 });
 var sharedSession = require("express-socket.io-session");
 httpsApp.use(session);
-//noinspection JSCheckFunctionSignatures
+
 io.use(sharedSession(session, {
   autoSave:true
 }));
