@@ -104,7 +104,7 @@ describe('Tests for Header Unverified',function(){
     it('Clicking on the logo sends me home', function(done){
         browser.get("https://localhost:8443/");
         element(by.css('#unverifiedHeader .create')).click();
-        element(by.css('#unverifiedHeader .logo')).click();
+        element(by.css(' .logo')).click();
         expect(element(by.css("#home")).isPresent()).toBeTruthy();
         done();
     });
