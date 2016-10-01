@@ -45,7 +45,7 @@ describe('Tests for Header Unverified',function(){
         done();
     });
 
-    it('The Home Button takes me to Create',function(done){
+    it('The Create Button takes me to Create',function(done){
         browser.get("https://localhost:8443/");
         element(by.css('#unverifiedHeader .create')).click();
         expect(element(by.css("#create")).isPresent()).toBeTruthy();
@@ -98,6 +98,14 @@ describe('Tests for Header Unverified',function(){
         element(by.css('#unverifiedHeader .login')).click();
         expect(element(by.css("#signup")).isPresent()).toBeFalsy();
         expect(element(by.css("#login")).isPresent()).toBeTruthy();
+        done();
+    });
+
+    it('Clicking on the logo sends me home', function(done){
+        browser.get("https://localhost:8443/");
+        element(by.css('#unverifiedHeader .create')).click();
+        element(by.css('#unverifiedHeader .logo')).click();
+        expect(element(by.css("#home")).isPresent()).toBeTruthy();
         done();
     });
 });
