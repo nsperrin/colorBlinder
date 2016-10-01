@@ -36,7 +36,7 @@ input[type=email]:focus, input[type=password]:focus{
     box-shadow: none;
 }
 
-#loginForm, #signUpForm{
+#login, #signup{
     border: 1px solid gray;
     padding:20px;
 }
@@ -45,7 +45,7 @@ input[type=email]:focus, input[type=password]:focus{
     text-align: center;
 }
 
-#loginForm .btn, #signUpForm .btn{
+#login .btn, #signup .btn{
     margin-top: 10px;
 }
 

@@ -1,0 +1,23 @@
+<div id="login"  class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-2 pull-right">
+    <form class="form-signin">
+        <div class="centerTextCont"><h2 class="form-signin-heading">Please Sign In</h2></div>
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail"  ng-model="loginCreds.email" class="form-control" placeholder="Email address" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword"  ng-model="loginCreds.pass" class="form-control" placeholder="Password"  required>
+
+        <button class="btn btn-md btn-primary pull-right" type="submit" ng-click="login()">Sign in</button>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="loginCreds.rememberMe"> Remember me
+            </label>
+        </div>
+    </form>
+    <div class="bottom-align-text small-text">
+        <a ng-click="displaySignUp()">Not a member?</a>
+        <a>Forgot your password?</a>
+    </div>
+</div>
