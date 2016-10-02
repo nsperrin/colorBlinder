@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www || true",
+    "start": "start node bin/www || true",
     "protractorTests": "gulp protractor || true",
     "karmaTests": "gulp karma || true",
     "mochaTests": "gulp mocha || true",
