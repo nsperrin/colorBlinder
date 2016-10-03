@@ -52,4 +52,8 @@ describe('Signing Up', function(){
     it('when I submit I am directed to the verified version of the page',function(done){
         done();
     });
+
+    it('when I sign up with a remember me, and leave the page and come back, I am logged in', function(done){
+        done();
+    });
 });

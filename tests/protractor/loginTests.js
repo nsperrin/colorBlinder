@@ -47,4 +47,8 @@ describe('Tests for the login popup', function(){
     it('if I sumbit good credentials then I am directed to the verified version of that page', function(done){
         done();
     });
+
+    it('when I login with a remember me, and leave the page and come back, I am logged in', function(done){
+        done();
+    });
 });
