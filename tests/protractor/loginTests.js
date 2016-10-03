@@ -4,14 +4,19 @@
 describe('Tests for the login popup', function(){
 
     beforeEach(function(done){
+        //add test users
+
         //sign out if I am logged in
 
         //navigate to the login popup
+
         done();
     });
 
     afterEach(function(done){
         //sign out if I am logged in
+
+        //remove any test users if any are in
         done();
     });
 

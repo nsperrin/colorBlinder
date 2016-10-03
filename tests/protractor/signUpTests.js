@@ -12,6 +12,8 @@ describe('Signing Up', function(){
 
     afterEach(function(done){
         //sign out if I'm signed in
+
+        //remove any test users
         done()
     });
 
