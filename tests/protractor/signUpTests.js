@@ -14,7 +14,11 @@ describe('Signing Up', function(){
 
     afterEach(function(done){
         //sign out if I'm signed in
-        element(by.css(".signup")).click();
+
+        //close signin popup
+        if(element(by.css('#signup')).isPresent()) {
+            element(by.css(".signup")).click();
+        }
         //remove any test users
         done()
     });
@@ -31,11 +35,6 @@ describe('Signing Up', function(){
 
     it('has a place for password confirmation',function(done){
         expect(element(by.css("#signup #inputConfirmPassword")).isPresent()).toBeTruthy();
-        done();
-    });
-
-    it('has a place for remembering me', function(done){
-        expect(element(by.css("#signup #signUpRememberMe")).isPresent()).toBeTruthy();
         done();
     });
 
@@ -72,44 +71,51 @@ describe('Signing Up', function(){
         expect(element(by.css('#signup #signUpButton')).getAttribute('disabled')).toBeTruthy();
         element(by.css("#signup #inputPassword")).clear();
         element(by.css("#signup #inputConfirmPassword")).clear();
+
         element(by.css("#signup #inputPassword")).sendKeys("testP@$$W0rd");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("2");
         expect(element(by.css('#signup #signUpButton')).getAttribute('disabled')).toBeTruthy();
         element(by.css("#signup #inputPassword")).clear();
         element(by.css("#signup #inputConfirmPassword")).clear();
+
         element(by.css("#signup #inputPassword")).sendKeys("1");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("testP@$$W0rd");
         expect(element(by.css('#signup #signUpButton')).getAttribute('disabled')).toBeTruthy();
         element(by.css("#signup #inputPassword")).clear();
         element(by.css("#signup #inputConfirmPassword")).clear();
+
         element(by.css("#signup #inputPassword")).sendKeys("testP@$$W0rd");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("testP@$$W0rd2");
         expect(element(by.css('#signup #signUpButton')).getAttribute('disabled')).toBeTruthy();
         element(by.css("#signup #inputPassword")).clear();
         element(by.css("#signup #inputConfirmPassword")).clear();
+
         element(by.css("#signup #inputPassword")).sendKeys("testP@$$W0rd");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("testP@$$W0rd");
         expect(element(by.css('#signup #signUpButton')).getAttribute('disabled')).toBeFalsy();
         element(by.css("#signup #inputPassword")).clear();
         element(by.css("#signup #inputConfirmPassword")).clear();
+
         done();
     });
 
-    it('when I submit I am added to the database',function(done){
+    it('when I submit and it is a new email address I am directed to the verified version of the page',function(done){
         element(by.css("#signup #inputEmail")).sendKeys("test@test.test");
         element(by.css("#signup #inputPassword")).sendKeys("testP@$$W0rd");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("testP@$$W0rd");
         element(by.css('#signup #signUpButton')).click();
         browser.sleep(1000);
+        expect(element(by.css('.logout')).isPresent()).toBeTruthy();
         done();
     });
 
-    it('when I submit I am directed to the verified version of the page',function(done){
+    it('when I submit and it is an already in use email address I am given an error message',function(done){
         element(by.css("#signup #inputEmail")).sendKeys("test@test.test");
         element(by.css("#signup #inputPassword")).sendKeys("testP@$$W0rd");
         element(by.css("#signup #inputConfirmPassword")).sendKeys("testP@$$W0rd");
         element(by.css('#signup #signUpButton')).click();
         browser.sleep(1000);
+        expect(element(by.css('#signup #error')).isPresent()).toBeTruthy();
         done();
     });
 });
