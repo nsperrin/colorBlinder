@@ -55,6 +55,6 @@ colorBlinder.controller('master', ['$scope', '$state', function($scope,$state) {
         $scope.hasError = true;
     };
 
-    $scope.socket.on('signUpFail', $scope.signUpSuccess);
+    $scope.socket.on('signUpSuccess', $scope.signUpSuccess);
     $scope.socket.on('signUpFail', $scope.signUpFail);
 }]);
