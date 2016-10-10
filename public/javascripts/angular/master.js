@@ -3,17 +3,14 @@
  */
 colorBlinder.controller('master', ['$scope', '$state', function($scope,$state) {
     $scope.stateMachine = new stateMachine();
-
+    $scope.socket = io('https://localhost:8443',{secure:true});
     $scope.userData;
-
     $scope.currentScheme;
-
     $scope.signup = {
         email:null,
         password:null,
         passwordConfirm:null
     };
-
     $scope.hasError = false;
 
     $scope.isSignUpDisabled = function(){
@@ -48,13 +45,16 @@ colorBlinder.controller('master', ['$scope', '$state', function($scope,$state) {
         $scope.socket.emit('signup',$scope.signup);
     };
 
-    $scope.submitSuccess = function(){
+    $scope.signUpSuccess = function(){
         $scope.changeState('success');
+        $scope.hasError = false;
     };
 
-    $scope.submitFail = function(){
+    $scope.signUpFail = function(){
         $scope.changeState('failure');
         $scope.hasError = true;
     };
 
+    $scope.socket.on('signUpFail', $scope.signUpSuccess);
+    $scope.socket.on('signUpFail', $scope.signUpFail);
 }]);

@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt-nodejs');
+
 exports.ioRoute = function(socket) {
     socket.on('login', function(data){
         console.log(data);
@@ -7,7 +9,9 @@ exports.ioRoute = function(socket) {
         console.log('logging out');
     });
 
-    socket.on('signUp', function(data){
+    socket.on('signup', function(data){
+        data.password = bcrypt.hashSync(data.password);
+        console.log(bcrypt.compareSync(data.passwordConfirm,data.password));
         console.log(data);
     });
 };
