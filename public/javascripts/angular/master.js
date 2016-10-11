@@ -47,12 +47,19 @@ colorBlinder.controller('master', ['$scope', '$state', function($scope,$state) {
 
     $scope.signUpSuccess = function(){
         $scope.changeState('success');
-        $scope.hasError = false;
+        setTimeout(function(){
+            $scope.hasError = false;
+            $scope.$apply();
+        },0);
     };
 
     $scope.signUpFail = function(){
         $scope.changeState('failure');
-        $scope.hasError = true;
+        setTimeout(function(){
+            $scope.hasError = true;
+            $scope.$apply();
+        },0);
+
     };
 
     $scope.socket.on('signUpSuccess', $scope.signUpSuccess);

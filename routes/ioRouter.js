@@ -17,8 +17,8 @@ exports.ioRoute = function(socket) {
         db.checkForExistingEmail(data,function failure(){
             socket.emit('signUpFail');
         },function success(userdata){
-            data.password = bcrypt.hashSync(data.password);
-            db.createUser(data);
+            userdata.password = bcrypt.hashSync(userdata.password);
+            db.createUser(userdata);
             socket.handshake.session.userdata = userdata;
             socket.emit('signUpSuccess', userdata);
         });
