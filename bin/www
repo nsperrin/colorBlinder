@@ -28,19 +28,23 @@ var httpServer = http.createServer(httpApp);
 httpServer.listen(8080);
 
 
-var io = require('socket.io')(httpsServer);
 var ioRouter = require('../routes/ioRouter');
-var session = require("express-session")({
-  secret: certificate,
-  resave: true,
-  saveUninitialized: true
-});
-var sharedSession = require("express-socket.io-session");
+var io = require("socket.io")(httpsServer),
+    session = require("express-session")({
+      secret: "my-secret",
+      resave: true,
+      saveUninitialized: true
+    }),
+    sharedsession = require("express-socket.io-session");
+
+
+// Attach session
 httpsApp.use(session);
 
-io.use(sharedSession(session, {
-  autoSave:true
-}));
+// Share session with io sockets
+
+io.use(sharedsession(session));
+
 io.on('connection', ioRouter.ioRoute);
 
 

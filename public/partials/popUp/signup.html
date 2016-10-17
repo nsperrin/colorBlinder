@@ -2,7 +2,7 @@
     <form class="form-signin">
         <div class="centerTextCont"><h2 class="form-signin-heading">Welcome to ColorBlinder</h2></div>
 
-        <p ng-show="hasError" id="error" class="bg-warning text-danger centerTextCont">That email is already in use!</p>
+        <p ng-show="hasError" id="error" class="bg-warning text-danger centerTextCont">{{error}}</p>
 
         <label for="inputEmail" class="sr-only">Enter your Email</label>
         <input type="email" id="inputEmail" ng-model="signup.email" class="form-control" placeholder="Enter your Email" required autofocus>

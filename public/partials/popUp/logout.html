@@ -1,0 +1,12 @@
+<div id="login"  class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-2 pull-right">
+    <form class="form-signin">
+        <div class="centerTextCont"><h2 class="form-signin-heading">Are you sure you want to logout?</h2></div>
+
+        <p ng-show="hasError" id="error" class="bg-warning text-danger centerTextCont">{{error}}</p>
+
+        <div>
+            <button class="btn btn-md btn-block btn-primary btn-success" type="submit" ng-click="logout()">Yes</button>
+            <button class="btn btn-md btn-block btn-primary btn-danger" type="submit" ng-click="displayLogout()">No</button>
+        </div>
+    </form>
+</div>

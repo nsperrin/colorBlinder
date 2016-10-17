@@ -75,6 +75,43 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
         }
     };
 
+    var vHome = {
+        url:'/home',
+        views:{
+            header: {
+                templateUrl: 'partials/header/verified.html'
+            },
+            subHeader:{
+                template:""
+            },
+            popUp:{
+                template:""
+            },
+            main:{
+                templateUrl:"partials/main/home.html"
+            }
+        }
+    };
+
+    var vHomeLogout = {
+        url:'/home',
+        views:{
+            header: {
+                templateUrl: 'partials/header/verified.html'
+            },
+            subHeader:{
+                template:""
+            },
+            popUp:{
+                templateUrl:"partials/popUp/logout.html"
+            },
+            main:{
+                templateUrl:"partials/main/home.html"
+            }
+        }
+    };
+
+
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -82,4 +119,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
         .state('uHomeLogin',uHomeLogin)
         .state('uHomeSignUp',uHomeSignUp)
         .state('uCreate',uCreate)
+        .state('vHome',vHome)
+        .state('vHomeLogout',vHomeLogout)
 });
+
