@@ -1,13 +1,31 @@
 /**
  * Created by Nick on 10/1/2016.
  */
-colorBlinder.controller('master', ['$scope', '$state','$rootScope', function($scope,$state,$rootScope) {
-    $scope.stateMachine = new stateMachine();
+colorBlinder.controller('master', ['$scope', '$state','$rootScope','stateMachine','colorConvert', function($scope,   $state,  $rootScope,  stateMachine,  colorConvert) {
+    $scope.stateMachine = new stateMachine('uHome');
+    $scope.colorConvert = new colorConvert();
+    $scope.inView = false;
+    $scope.colorModel='Normal';
+    $scope.blindness = [
+        "Normal",
+        "Protanopia",
+        "Protanomaly",
+        "Deuteranopia",
+        "Deuteranomaly",
+        "Tritanopia",
+        "Tritanomaly",
+        "Achromatopsia",
+        "Achromatomaly"
+    ];
+
     $rootScope.socket = io('https://localhost:8443', {
         secure:true,
         reconnect:true
     });
-    $scope.currentScheme;
+    $scope.currentScheme = {
+        name:'',
+        colors:[]
+    };
     $scope.signup = {
         email:null,
         password:null,
@@ -38,17 +56,22 @@ colorBlinder.controller('master', ['$scope', '$state','$rootScope', function($sc
     };
 
     $scope.changeState = function(action){
-        $scope.stateMachine.getNext($state.$current,action,function(newState){
+        $scope.stateMachine.next(action,function(newState){
+            $scope.inView = newState.includes("View");
+            if(!newState.includes("Home")){
+                setTimeout(function(){
+                    $scope.updateColor();
+                },0);
+            }
             $scope.hasError = false;
             $scope.error = null;
-            $rootScope.socket.emit('saveState',{state:newState});
             $state.go(newState);
         });
     };
 
     $scope.displayLogin = function(){$scope.changeState('login');};
 
-    $scope.displaySignUp = function(){$scope.changeState('signup');};
+    $scope.displaySignUp = function(){$scope.changeState('signUp');};
 
     $scope.create = function(){$scope.changeState('create');};
 
@@ -139,4 +162,35 @@ colorBlinder.controller('master', ['$scope', '$state','$rootScope', function($sc
     $rootScope.socket.on('reconnect',function(data){
         console.log(data);
     });
+
+    $scope.addToScheme = function(){
+        console.log("adding");
+        $scope.currentScheme.colors.push({R:0,G:0,B:0});
+        setTimeout(function(){
+            $scope.updateColor();
+        },0);
+    };
+
+    $scope.updateColor = function(){
+        console.log($scope.colorModel);
+        $('.color').each(function(index){
+            var newColor = $scope.colorConvert.convert($scope.currentScheme.colors[index],$scope.colorModel);
+            $(this).css("background-color","rgba("
+                +newColor.R
+                +","+newColor.G
+                +","+newColor.B+","
+                +1+")");
+        });
+    };
+
+    $scope.eyeCancel = function(){
+        $scope.changeState('cancel');
+    };
+
+    $scope.updateBlindness = function(blindness){
+        $scope.colorModel = blindness;
+        setTimeout(function(){
+            $scope.updateColor();
+        },0);
+    };
 }]);

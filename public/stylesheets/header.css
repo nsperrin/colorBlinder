@@ -1,10 +1,48 @@
+.subHeader li{
+    display: inline;
+    padding-left: 10px;
+}
 
+.subHeader ul{
+    padding-left:10px;
+}
+
+.subHeader{
+    background-color: darkslategray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 30px;
+}
+
+.subHeader a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.subHeader a:visited{
+    color: #9d9d9d;
+    text-decoration: none;
+}
+
+.subHeader a:focus{
+    color: #9d9d9d;
+    text-decoration: none;
+}
+
+.subHeader a{
+    color: #9d9d9d;
+    text-decoration: none;
+}
 
 .topnav {
   background-color: darkslategray;
   border-radius: 0;
   border:none;
   color: white;
+}
+
+.topnav select{
+    color: black;
 }
 
 .navbar-brand{

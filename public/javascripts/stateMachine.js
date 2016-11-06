@@ -1,364 +1,205 @@
-/**
- * Created by Nick on 9/25/2016.
- */
 
-function stateMachine(){
-    tsd = {
-        uHome : {
-            home      : "uHome",
-            view      : "uHome",
-            create    : "uCreate",
-            login     : "uHomeLogin",
-            signup    : "uHomeSignUp",
-            logout    : "uHome",
-            save      : "uHome",
-            saveAs    : "uHome",
-            delete    : "uHome",
-            myColors  : "uHome",
-            share     : "uHome",
-            cancel    : "uHome",
-            success   : "uHome",
-            failure   : "uHome"
-        },
-        uHomeLogin : {
-            home      : "uHome",
-            view      : "uHomeLogin",
-            create    : "uCreate",
-            login     : "uHome",
-            signup    : "uHomeSignUp",
-            logout    : "uHomeLogin",
-            save      : "uHomeLogin",
-            saveAs    : "uHomeLogin",
-            delete    : "uHomeLogin",
-            myColors  : "uHomeLogin",
-            share     : "uHomeLogin",
-            cancel    : "uHome",
-            success   : "vHome",
-            failure   : "uHomeLogin"
-        },
-        uHomeSignUp : {
-            home      : "uHome",
-            view      : "uHomeSignUp",
-            create    : "uCreate",
-            login     : "uHomeLogin",
-            signup    : "uHome",
-            logout    : "uHomeSignUp",
-            save      : "uHomeSignUp",
-            saveAs    : "uHomeSignUp",
-            delete    : "uHomeSignUp",
-            myColors  : "uHomeSignUp",
-            share     : "uHomeSignUp",
-            cancel    : "uHome",
-            success   : "vHome",
-            failure   : "uHomeSignUp"
-        },
-        uCreate : {
-            home      : "uHome",
-            view      : "uView",
-            create    : "uCreate",
-            login     : "uCreateLogin",
-            signup    : "uCreateSignUp",
-            logout    : "uCreate",
-            save      : "uCreateLogin",
-            saveAs    : "uCreateLogin",
-            delete    : "uCreate",
-            myColors  : "uCreate",
-            share     : "uCreateLogin",
-            cancel    : "uHome",
-            success   : "uCreate",
-            failure   : "uCreate"
-        },
-        uCreateLogin : {
-            home      : "uHome",
-            view      : "uView",
-            create    : "uCreate",
-            login     : "uCreate",
-            signup    : "uCreateSignUp",
-            logout    : "uCreateLogin",
-            save      : "uCreateLogin",
-            saveAs    : "uCreateLogin",
-            delete    : "uCreateLogin",
-            myColors  : "uCreateLogin",
-            share     : "uCreateLogin",
-            cancel    : "uCreate",
-            success   : "vCreate",
-            failure   : "uCreateLogin"
-        },
-        uCreateSignUp : {
-            home      : "uHome",
-            view      : "uView",
-            create    : "uCreate",
-            login     : "uCreateLogin",
-            signup    : "uCreate",
-            logout    : "uCreateSignUp",
-            save      : "uCreateSignUp",
-            saveAs    : "uCreateSignUp",
-            delete    : "uCreateSignUp",
-            myColors  : "uCreateSignUp",
-            share     : "uCreateSignUp",
-            cancel    : "uCreate",
-            success   : "vCreate",
-            failure   : "uCreateSignUp"
-        },
-        uView : {
-            home      : "uView",
-            view      : "uView",
-            create    : "uView",
-            login     : "uView",
-            signup    : "uView",
-            logout    : "uView",
-            save      : "uViewLogin",
-            saveAs    : "uViewLogin",
-            delete    : "uView",
-            myColors  : "uView",
-            share     : "uViewLogin",
-            cancel    : "uCreate",
-            success   : "uView",
-            failure   : "uCreate"
-        },
-        uViewLogin : {
-            home      : "uViewLogin",
-            view      : "uViewLogin",
-            create    : "uViewLogin",
-            login     : "uViewLogin",
-            signup    : "uViewSignup",
-            logout    : "uViewLogin",
-            save      : "uViewLogin",
-            saveAs    : "uViewLogin",
-            delete    : "uViewLogin",
-            myColors  : "uViewLogin",
-            share     : "uViewLogin",
-            cancel    : "uView",
-            success   : "vView",
-            failure   : "uViewLogin"
-        },
-        uViewSignUp : {
-            home      : "uViewSignUp",
-            view      : "uViewSignUp",
-            create    : "uViewSignUp",
-            login     : "uViewLogin",
-            signup    : "uView",
-            logout    : "uViewSignUp",
-            save      : "uViewSignUp",
-            saveAs    : "uViewSignUp",
-            delete    : "uViewSignUp",
-            myColors  : "uViewSignUp",
-            share     : "uViewSignUp",
-            cancel    : "uView",
-            success   : "vView",
-            failure   : "uViewSignUp"
-        },
-        vHome : {
-            home      : "vHome",
-            view      : "vHome",
-            create    : "vCreate",
-            login     : "vHome",
-            signup    : "vHome",
-            logout    : "vHomeLogout",
-            save      : "vHome",
-            saveAs    : "vHome",
-            delete    : "vHome",
-            myColors  : "vMyColors",
-            share     : "vHome",
-            cancel    : "vHome",
-            success   : "vHome",
-            failure   : "vHome"
-        },
-        vHomeLogout : {
-            home      : "vHome",
-            view      : "vHomeLogout",
-            create    : "vHome",
-            login     : "vHomeLogout",
-            signup    : "vHomeLogout",
-            logout    : "vHome",
-            save      : "vHomeLogout",
-            saveAs    : "vHomeLogout",
-            delete    : "vHomeLogout",
-            myColors  : "vMyColors",
-            share     : "vHomeLogout",
-            cancel    : "vHome",
-            success   : "uHome",
-            failure   : "vHomeLogout"
-        },
-        vMyColors : {
-            home      : "vHome",
-            view      : "vMyColors",
-            create    : "vCreate",
-            login     : "vMyColors",
-            signup    : "vMyColors",
-            logout    : "vMyColorsLogout",
-            save      : "vMyColors",
-            saveAs    : "vMyColors",
-            delete    : "vMyColorsDelete",
-            myColors  : "vMyColors",
-            share     : "vMyColors",
-            cancel    : "vMyColors",
-            success   : "vMyColors",
-            failure   : "vMyColors"
-        },
-        vMyColorsLogout : {
-            home      : "vHome",
-            view      : "vHome",
-            create    : "vCreate",
-            login     : "vMyColorsLogout",
-            signup    : "vMyColorsLogout",
-            logout    : "vMyColors",
-            save      : "vMyColorsLogout",
-            saveAs    : "vMyColorsLogout",
-            delete    : "vMyColorsDelete",
-            myColors  : "vMyColors",
-            share     : "vMyColorsLogout",
-            cancel    : "vMyColors",
-            success   : "uHome",
-            failure   : "vMyColorsLogout"
-        },
-        vMyColorsDelete : {
-            home      : "vHome",
-            view      : "vMyColor",
-            create    : "vCreate",
-            login     : "vMyColorsDelete",
-            signup    : "vMyColorsDelete",
-            logout    : "vMyColorsLogout",
-            save      : "vMyColorsDelete",
-            saveAs    : "vMyColorsDelete",
-            delete    : "vMyColors",
-            myColors  : "vMyColors",
-            share     : "vMyColorsDelete",
-            cancel    : "vMyColors",
-            success   : "vMyColors",
-            failure   : "vMyColorsDelete"
-        },
-        vCreate : {
-            home      : "vHome",
-            view      : "vView",
-            create    : "vCreate",
-            login     : "vCreate",
-            signup    : "vCreate",
-            logout    : "vCreate",
-            save      : "vCreate",
-            saveAs    : "vCreateSaveAs",
-            delete    : "vCreate",
-            myColors  : "vMyColors",
-            share     : "vCreateShare",
-            cancel    : "vMyColors",
-            success   : "vCreate",
-            failure   : "vCreate"
-        },
-        vCreateLogout : {
-            home      : "vHome",
-            view      : "vView",
-            create    : "vCreate",
-            login     : "vCreate",
-            signup    : "vCreate",
-            logout    : "vCreate",
-            save      : "vCreate",
-            saveAs    : "vCreateSaveAs",
-            delete    : "vCreate",
-            myColors  : "vMyColors",
-            share     : "vCreateShare",
-            cancel    : "vCreate",
-            success   : "uHome",
-            failure   : "vCreate"
-        },
-        vCreateSaveAs : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        },
-        vCreateShare : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        },
-        vView : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        },
-        vViewLogout : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup     : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        },
-        vViewSaveAs : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        },
-        vViewShare : {
-            home      : "",
-            view      : "",
-            create    : "",
-            login     : "",
-            signup    : "",
-            logout    : "",
-            save      : "",
-            saveAs    : "",
-            delete    : "",
-            myColors  : "",
-            share     : "",
-            cancel    : "",
-            success   : "",
-            failure   : ""
-        }
+colorBlinder.factory('stateMachine', function() {
+    var stateMachine = function(startState){
+        this.defaultState = 'uHome';
+        this.states  = [
+            "uHome"  ,"uHomeLogin"  ,"uHomeSignUp",
+            "uCreate","uCreateLogin","uCreateSignUp",
+            "uView","uViewLogin","uViewSignUp",
+            "vHome","vHomeLogout",
+            "vCreate","vCreateLogout","vCreateSaveAs","vCreateShare",
+            "vView","vViewSaveAs","vViewShare",
+            "vMyColors","vMyColorsLogout","vMyColorsDelete"
+        ];
+        this.commands = [
+            "home"  ,"create","view"   ,"myColors",
+            "login" ,"signUp","logout" ,"saveAs",
+            "delete","share" ,"success","cancel"
+        ];
+        this.transitions = {
+            uHome:{
+                create:"uCreate",
+                login :"uHomeLogin",
+                signUp:"uHomeSignUp"
+            },
+            uHomeLogin:{
+                home   :"uHome",
+                create :"uCreate",
+                login  :"uHome",
+                signUp :"uHomeSignUp",
+                success:"vHome"
+            },
+            uHomeSignUp:{
+                home   :"uHome",
+                create :"uCreate",
+                login  :"uHomeLogin",
+                signUp :"uHome",
+                success:"vHome"
+            },
+            vHome:{
+                myColors:"vMyColors",
+                create  :"vCreate",
+                logout  :"vHomeLogout"
+            },
+            vHomeLogout:{
+                home    :"vHome",
+                myColors:"vMyColors",
+                create  :"vCreate",
+                logout  :"vHomeLogout",
+                success :"uHome"
+            },
+            uCreate:{
+                home    :"uHome",
+                view    :"uView",
+                login   :"uCreateLogin",
+                signUp  :"uCreateSignUp",
+                cancel  :"uView",
+                saveAs  :"uCreateLogin",
+                share   :"vCreateLogin"
+            },
+            uCreateLogin:{
+                home    :"uHome",
+                create  :"uCreate",
+                view    :"uView",
+                login   :"uCreate",
+                signUp  :"uCreateSignUp",
+                cancel  :"uView",
+                saveAs  :"uCreateLogin",
+                share   :"vCreateLogin",
+                success :"uCreate"
+            },
+            uCreateSignUp:{
+                home    :"uHome",
+                create  :"uCreate",
+                view    :"uView",
+                login   :"uCreateLogin",
+                signUp  :"uCreate",
+                cancel  :"uView",
+                saveAs  :"uCreateLogin",
+                share   :"vCreateLogin",
+                success :"uCreate"
+            },
+            vCreate:{
+                home    :"vHome",
+                myColors:"vMyColors",
+                view    :"vView",
+                logout  :"vCreateLogout",
+                cancel  :"vView",
+                saveAs  :"vCreateSaveAs",
+                share   :"vCreateShare",
+                success :"vCreate"
+            },
+            vCreateLogout:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                view    :"vView",
+                logout  :"vCreate",
+                cancel  :"vView",
+                saveAs  :"vCreateSaveAs",
+                share   :"vCreateShare",
+                success :"vCreate"
+            },
+            vCreateSaveAs:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                view    :"vView",
+                logout  :"vCreateLogout",
+                cancel  :"vView",
+                saveAs  :"vCreate",
+                share   :"vCreateShare",
+                success :"vCreate"
+            },
+            vCreateShare:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                view    :"vView",
+                logout  :"vCreateLogout",
+                cancel  :"vView",
+                saveAs  :"vCreateSaveAs",
+                share   :"vCreate",
+                success :"vCreate"
+            },
+            uView:{
+                cancel:"uCreate",
+                saveAs:"uViewLogin",
+                share :"uViewLogin"
+            },
+            uViewLogin:{
+                cancel :"uCreate",
+                signUp :"uViewSignUp",
+                success:"uView"
+            },
+            uViewSignUp:{
+                cancel :"uCreate",
+                login  :"uViewLogin",
+                success:"uView"
+            },
+            vView:{
+                cancel:"vCreate",
+                saveAs:"vViewSaveAs",
+                share :"vViewShare"
+            },
+            vViewSaveAs:{
+                cancel :"vCreate",
+                saveAs :"vView",
+                share  :"vViewShare",
+                success:"vView"
+            },
+            vViewShare:{
+                cancel :"vCreate",
+                saveAs :"vViewSaveAs",
+                share  :"vView",
+                success:"vView"
+            },
+            vMyColors:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                logout  :"vMyColorsLogout",
+                delete  :"vMyColorsDelete"
+            },
+            vMyColorsLogout:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                logout  :"vMyColors",
+                delete  :"vMyColorsDelete",
+                success :"uHome"
+            },
+            vMyColorsDelete:{
+                home    :"vHome",
+                create  :"vCreate",
+                myColors:"vMyColors",
+                logout  :"vMyLogout",
+                delete  :"vMyColors",
+                success :"vMyColors"
+            }
+
+        };
+        this.current = (this.states.indexOf(startState) !== -1) ? startState : this.defaultState;
     };
 
-    this.getNext = function(currentState,command,next){
-        next(tsd[currentState][command]);
-    }
-}
+    stateMachine.prototype.next = function(command, callback){
+        var returnState = this.current;
+        if( (this.commands.indexOf(command) !== -1)&&
+            (this.transitions.hasOwnProperty(this.current))&&
+            (this.transitions[this.current].hasOwnProperty(command))
+        ){
+            returnState = this.transitions[this.current][command];
+        }
+        if(this.states.indexOf(returnState)){
+            this.current = returnState;
+        }
+        callback(returnState);
+    };
+
+    stateMachine.prototype.get = function(){
+        return this.current;
+    };
+
+    return stateMachine;
+});
+

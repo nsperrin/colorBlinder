@@ -1,1 +1,15 @@
-<div id="create"></div>
+<div id="create">
+    <div ng-repeat="color in currentScheme.colors" class="col-xs-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 tileCont">
+        <div class="tile color">
+            <input type="number"  min="0" max="255" ng-model="color.R" ng-change="updateColor()"/>
+            <input type="number"  min="0" max="255" ng-model="color.G" ng-change="updateColor()"/>
+            <input type="number"  min="0" max="255" ng-model="color.B" ng-change="updateColor()"/>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 col-xl-2  tileCont">
+        <div ng-click="addToScheme()" class="tile">
+            add new color+
+        </div>
+    </div>
+
+</div>
