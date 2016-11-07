@@ -74,3 +74,28 @@ body{
   border: 1px solid gray;
   height: 100%;
 }
+
+.scheme{
+  display: flex;
+  height: 100%;
+}
+
+.colorBrick{
+  flex:1;
+}
+
+.schemeName{
+  position: absolute;
+  bottom: 7px;
+  left:7px;
+  width:calc(100% - 14px);
+  height: calc(50% - 7px);
+  padding: 5px;
+  background-color: rgba(40,40,40,.5);
+  color:white;
+  visibility: hidden;
+}
+
+.scheme:hover > .schemeName{
+  visibility: visible;
+}
