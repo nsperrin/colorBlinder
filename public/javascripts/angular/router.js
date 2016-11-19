@@ -3,9 +3,15 @@
  */
 
 colorBlinder.config(function($stateProvider, $urlRouterProvider) {
+
+
+
+
+
+
     var templates = {
         uHome          :{
-            url:'/home',
+            url:'/uHome',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -22,7 +28,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uHomeLogin     :{
-            url:'/home',
+            url:'/uHomeLogin',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -39,7 +45,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uHomeSignUp    :{
-            url:'/home',
+            url:'/uHomeSignUp',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -56,7 +62,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uCreate        :{
-            url:'/create',
+            url:'/uCreate',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -73,7 +79,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uCreateLogin   :{
-            url:'/create',
+            url:'/uCreateLogin',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -90,7 +96,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uCreateSignUp  :{
-            url:'/create',
+            url:'/uCreateSignUp',
             views:{
                 header: {
                     templateUrl: 'partials/header/unverified.html'
@@ -107,7 +113,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uView          :{
-            url:'/view',
+            url:'/uView',
             views:{
                 header: {
                     template: ''
@@ -124,7 +130,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uViewLogin     :{
-            url:'/view',
+            url:'/uViewLogin',
             views:{
                 header: {
                     template: ''
@@ -141,7 +147,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         uViewSignUp    :{
-            url:'/view',
+            url:'/uViewSignUp',
             views:{
                 header: {
                     template: ''
@@ -158,7 +164,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vHome          :{
-            url:'/home',
+            url:'/vHome',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -175,7 +181,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vHomeLogout    :{
-            url:'/home',
+            url:'/vHomeLogout',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -192,7 +198,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vCreate        :{
-            url:'/create',
+            url:'/vCreate',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -209,7 +215,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vCreateLogout  :{
-            url:'/create',
+            url:'/vCreateLogout',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -226,7 +232,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vCreateSaveAs  :{
-            url:'/create',
+            url:'/vCreateSaveAs',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -243,7 +249,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vCreateShare   :{
-            url:'/create',
+            url:'/vCreateShare',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -260,7 +266,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vView          :{
-            url:'/view',
+            url:'/vView',
             views:{
                 header: {
                     template: ''
@@ -277,7 +283,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vViewSaveAs    :{
-            url:'/view',
+            url:'/vViewSaveAs',
             views:{
                 header: {
                     template: ''
@@ -294,7 +300,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vViewShare     :{
-            url:'/view',
+            url:'/vViewShare',
             views:{
                 header: {
                     template: ''
@@ -311,7 +317,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vMyColors      :{
-            url:'/myColors',
+            url:'/vMyColors',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -328,7 +334,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vMyColorsLogout:{
-            url:'/myColors',
+            url:'/vMyColorsLogout',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -345,7 +351,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
             }
         },
         vMyColorsDelete:{
-            url:'/myColors',
+            url:'/vMyColorsDelete',
             views:{
                 header: {
                     templateUrl: 'partials/header/verified.html'
@@ -363,7 +369,7 @@ colorBlinder.config(function($stateProvider, $urlRouterProvider) {
         }
     };
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/uHome');
 
     $stateProvider
         .state("uHome"          , templates.uHome)

@@ -55,7 +55,7 @@ colorBlinder.factory('stateMachine', function() {
                 signUp  :"uCreateSignUp",
                 cancel  :"uView",
                 saveAs  :"uCreateLogin",
-                share   :"vCreateLogin"
+                share   :"uCreateLogin"
             },
             uCreateLogin:{
                 home    :"uHome",
@@ -66,7 +66,7 @@ colorBlinder.factory('stateMachine', function() {
                 cancel  :"uView",
                 saveAs  :"uCreateLogin",
                 share   :"vCreateLogin",
-                success :"uCreate"
+                success :"vCreate"
             },
             uCreateSignUp:{
                 home    :"uHome",
@@ -77,7 +77,7 @@ colorBlinder.factory('stateMachine', function() {
                 cancel  :"uView",
                 saveAs  :"uCreateLogin",
                 share   :"vCreateLogin",
-                success :"uCreate"
+                success :"vCreate"
             },
             vCreate:{
                 home    :"vHome",
@@ -183,16 +183,17 @@ colorBlinder.factory('stateMachine', function() {
     };
 
     stateMachine.prototype.next = function(command, callback){
-        var returnState = this.current;
+        var returnState = this.get();
+        console.log('I am starting at '+returnState+' and doing '+command);
         if( (this.commands.indexOf(command) !== -1)&&
-            (this.transitions.hasOwnProperty(this.current))&&
-            (this.transitions[this.current].hasOwnProperty(command))
+            (this.transitions.hasOwnProperty(returnState))&&
+            (this.transitions[returnState].hasOwnProperty(command))
         ){
+            console.log('I am changing');
             returnState = this.transitions[this.current][command];
         }
-        if(this.states.indexOf(returnState)){
-            this.current = returnState;
-        }
+        this.current = returnState;
+
         callback(returnState);
     };
 

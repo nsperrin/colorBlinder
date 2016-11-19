@@ -56,24 +56,33 @@ colorBlinder.controller('master', ['$scope', '$state','$rootScope','stateMachine
     };
 
     $scope.changeState = function(action){
-        console.log(JSON.stringify($scope.currentScheme));
         $scope.stateMachine.next(action,function(newState){
             console.log(newState);
             $scope.inView = newState.includes("View");
+            $scope.hasError = false;
+            $scope.error = null;
+            setTimeout(function(){
+                $state.go(newState);
+                $scope.$apply();
+            },0);
             if(!newState.includes("Home")){
                 setTimeout(function(){
                     $scope.updateColor();
+                    $scope.$apply()
                 },0);
             }
-            $scope.hasError = false;
-            $scope.error = null;
-            $state.go(newState);
         });
     };
 
-    $scope.displayLogin = function(){$scope.changeState('login');};
+    $scope.displayLogin = function(){
+        console.log('login');
+        $scope.changeState('login');
+    };
 
-    $scope.displaySignUp = function(){$scope.changeState('signUp');};
+    $scope.displaySignUp = function(){
+        console.log('signUp');
+        $scope.changeState('signUp');
+    };
 
     $scope.create = function(){$scope.changeState('create');};
 
