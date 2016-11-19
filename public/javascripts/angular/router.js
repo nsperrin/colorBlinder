@@ -4,11 +4,6 @@
 
 colorBlinder.config(function($stateProvider, $urlRouterProvider) {
 
-
-
-
-
-
     var templates = {
         uHome          :{
             url:'/uHome',

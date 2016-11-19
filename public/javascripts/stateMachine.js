@@ -184,12 +184,10 @@ colorBlinder.factory('stateMachine', function() {
 
     stateMachine.prototype.next = function(command, callback){
         var returnState = this.get();
-        console.log('I am starting at '+returnState+' and doing '+command);
         if( (this.commands.indexOf(command) !== -1)&&
             (this.transitions.hasOwnProperty(returnState))&&
             (this.transitions[returnState].hasOwnProperty(command))
         ){
-            console.log('I am changing');
             returnState = this.transitions[this.current][command];
         }
         this.current = returnState;
