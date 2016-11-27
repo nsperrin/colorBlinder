@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var assert = require('assert');
 var routes = require('./routes/index');
 
 var app = express();
@@ -20,6 +20,33 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
+var store = new MongoDBStore(
+    {
+      uri: 'mongodb://localhost:27017/color_blinder',
+      collection: 'sessions'
+    });
+
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true,
+  secure:true
+}));
+
+
 
 app.use('/', routes);
 

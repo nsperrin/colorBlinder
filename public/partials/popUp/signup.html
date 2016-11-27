@@ -2,16 +2,16 @@
     <form class="form-signin">
         <div class="centerTextCont"><h2 class="form-signin-heading">Welcome to ColorBlinder</h2></div>
 
-        <p ng-show="hasError" id="error" class="bg-warning text-danger centerTextCont">{{error}}</p>
+        <p ng-show="error" id="error" class="bg-warning text-danger centerTextCont">{{error}}</p>
 
         <label for="inputEmail" class="sr-only">Enter your Email</label>
-        <input type="email" id="inputEmail" ng-model="signup.email" class="form-control" placeholder="Enter your Email" required autofocus>
+        <input type="email" id="inputEmail" ng-model="signUpFormModels.email" class="form-control" placeholder="Enter your Email" required autofocus>
 
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" ng-model="signup.password" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" ng-model="signUpFormModels.password" class="form-control" placeholder="Password" required>
 
         <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
-        <input type="password" id="inputConfirmPassword" ng-model="signup.passwordConfirm" class="form-control" placeholder="Confirm password" required>
+        <input type="password" id="inputConfirmPassword" ng-model="signUpFormModels.passwordConfirm" class="form-control" placeholder="Confirm password" required>
         <button class="btn btn-md btn-primary pull-right" type="submit" id="signUpButton" ng-disabled="isSignUpDisabled()" ng-click="signUp()">Sign Up</button>
     </form>
 </div>

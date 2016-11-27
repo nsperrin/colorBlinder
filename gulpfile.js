@@ -29,7 +29,7 @@ gulp.task('protractor', function(callback) {
 
 
 gulp.task('mocha', function () {
-    gulp.src('tests/mocha-chai/*.js')
+    gulp.src('tests/mocha-chai/**/*.js')
         .pipe(mocha({
             useColors: true
         }));
