@@ -1,6 +1,7 @@
 
 colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', 'colorConvert', function($scope,$http,$state,StateMachine,ColorConvert){
-
+    $scope.userData = {email:'',password:'',schemes:[]};
+    $scope.Math = window.Math;
     $scope.ColorConvert = new ColorConvert();
     $scope.loginFormModels = {
         email:'',
@@ -123,7 +124,8 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.getUserData = function(){
         $http.get('/getUserData')
             .success(function(data){
-                $scope.userData = data.userData;
+                $scope.userData = data;
+                console.log(JSON.stringify($scope.userData));
             })
             .error(function(){
                 $scope.userData = null;
@@ -153,6 +155,7 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.changeState = function(action){
         $scope.stateMachine.next(action,function(newState){
             console.log($scope.currentState+' => '+newState);
+            console.log($scope.userData);
             $scope.currentState = newState;
             $scope.error = null;
             $scope.inView = newState.includes('View');
@@ -195,8 +198,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
         },0);
     };
 
-    $scope.Math = window.Math;
-
     $scope.initData = function(){
         $scope.getUserData();
         $scope.getState();
@@ -205,6 +206,18 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
         $scope.selectScheme = function(scheme){
             $scope.currentScheme =  jQuery.extend(true, {}, scheme);
             $scope.changeState('create');
+    };
+
+    $scope.save = function(){
+      $http.post('/saveScheme',$scope.currentScheme).then(
+          function(){
+              $scope.getUserData();
+          },
+          function(data){
+              $scope.getUserData();
+              $scope.error = data.error;
+          }
+      );
     };
 
     $(document).ready($scope.initData);

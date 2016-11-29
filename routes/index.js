@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/getUserData', function(req,res){
-    res.json({userData:req.session.userData||{}});
+    res.status(200).send(req.session.userData||{email:'',password:'',schemes:[]});
 });
 
 router.get('/getState', function(req,res){

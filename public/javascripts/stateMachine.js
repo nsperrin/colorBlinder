@@ -98,7 +98,7 @@ colorBlinder.factory('stateMachine', function() {
                 cancel  :"vView",
                 saveAs  :"vCreateSaveAs",
                 share   :"vCreateShare",
-                success :"vCreate"
+                success :"uHome"
             },
             vCreateSaveAs:{
                 home    :"vHome",
