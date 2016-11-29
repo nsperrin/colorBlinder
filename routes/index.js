@@ -25,7 +25,7 @@ router.get('/getState', function(req,res){
 router.post('/saveState', function(req, res){
     req.session.state = req.body.state || 'uHome';
     req.session.save();
-    res.status(200);
+    res.status(200).send({message:'ok'});
 });
 
 router.post('/login', function(req,res){
@@ -33,7 +33,7 @@ router.post('/login', function(req,res){
         req.session.userData = userData;
         req.session.save();
         if(err) res.status(400).send({error:err});//to change later for more robust error handling
-        else res.status(200);
+        else res.status(200).send({message:'ok'});
     });
 });
 
@@ -41,12 +41,12 @@ router.post('/signUp', function(req,res){
     db.signUp(req.body,(err,userData)=>{
         req.session.userData = userData;
         if(err) res.status(400).send({error:err});//to change later for more robust error handling
-        else res.status(200);
+        else res.status(200).send({message:'ok'});
     });});
 
 router.get('/logout', function(req,res){
     req.session.destroy(function(){
-        res.status(200);
+        res.status(200).send({message:'ok'});
     });
 });
 
@@ -54,7 +54,7 @@ router.post('/saveScheme', function(req,res){
     db.saveScheme(req.session.userData,req.body,(err,userData)=>{
         req.session.userData = userData;
         if(err) res.status(400).send({error:err});// to change later for more robust error handling
-        else res.status(200);
+        else res.status(200).send({message:'ok'});
     });
 });
 
@@ -62,7 +62,7 @@ router.post('/deleteScheme', function(req,res){
     db.saveScheme(req.session.userData,req.body,(err,userData)=>{
         req.session.userData = userData;
         if(err) res.status(400).send({error:err});// to change later for more robust error handling
-        else res.status(200);
+        else res.status(200).send({message:'ok'});
     });
 });
 
