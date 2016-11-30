@@ -99,3 +99,49 @@ body{
 .scheme:hover > .schemeName{
   visibility: visible;
 }
+
+
+.schemeNameInputContainer{
+  padding: 7px;
+}
+
+.schemeNameInput{
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  box-shadow: none;
+  height: 40px;
+  font-size: 16pt;
+  width: 100%;
+  padding-left: 7px;
+}
+
+.tile input{
+   padding-left: 5px;
+   background: none;
+   border: none;
+ }
+
+.tile input:focus{
+  padding-left: 5px;
+  background: none;
+  border: none;
+  border-bottom: solid 1px;
+  outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btmright{
+  position: absolute;
+  bottom:5px;
+  right:15px;
+}
+
+
+
