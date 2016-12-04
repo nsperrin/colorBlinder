@@ -59,7 +59,7 @@ router.post('/saveScheme', function(req,res){
 });
 
 router.post('/deleteScheme', function(req,res){
-    db.saveScheme(req.session.userData,req.body,(err,userData)=>{
+    db.deleteScheme(req.session.userData,req.body,(err,userData)=>{
         req.session.userData = userData;
         if(err) res.status(400).send({error:err});// to change later for more robust error handling
         else res.status(200).send({message:'ok'});

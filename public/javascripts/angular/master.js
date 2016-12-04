@@ -62,7 +62,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.login = function(){
         $http.post('/login', $scope.loginFormModels)
             .success(function(){
-                console.log('Login Success');
                 $scope.getUserData();
                 $scope.changeState('success');
             })
@@ -74,14 +73,11 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     };
 
     $scope.signUp = function(){
-        console.log('SignUp');
-        console.log($scope.signUpFormModels);
         $http({
             method: 'POST',
             url: '/signUp',
             data: $scope.signUpFormModels
         }).then(function successCallback(response) {
-            console.log('success');
             $scope.getUserData();
             $scope.changeState('success');
         }, function errorCallback(response) {
@@ -93,14 +89,12 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.logout = function(){
         $http.get('/logout')
             .success(function(){
-                console.log('Logout Success');
                 $scope.userData = null;
                 $scope.curreScheme = null;
                 $scope.schemes = null;
                 $scope.changeState('success');
             })
             .error(function(data){
-                console.log('Logout Success');
                 $scope.error = data.error
             });
     };
@@ -108,13 +102,11 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.getState = function(){
         $http.get('/getState')
             .success(function(data){
-                console.log('GetState Success: '+data.state);
                 $scope.currentState = data.state;
                 $scope.stateMachine = new StateMachine(data.state);
                 $state.go(data.state);
             })
             .error(function(){
-                console.log('GetState Fail:');
                 $scope.currentState = 'uHome';
                 $scope.stateMachine = new StateMachine('uHome');
                 $state.go('uHome');
@@ -125,7 +117,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
         $http.get('/getUserData')
             .success(function(data){
                 $scope.userData = data;
-                console.log(JSON.stringify($scope.userData));
             })
             .error(function(){
                 $scope.userData = null;
@@ -135,7 +126,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     $scope.saveState = function(){
         $http.post('/saveState', {state:$scope.currentState})
             .success(function(){
-                console.log('state saved');
             })
             .error(function(data){
                 $scope.error = data.error;
@@ -154,8 +144,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     //The following functions allow the app to flow
     $scope.changeState = function(action){
         $scope.stateMachine.next(action,function(newState){
-            console.log($scope.currentState+' => '+newState);
-            console.log($scope.userData);
             $scope.currentState = newState;
             $scope.error = null;
             $scope.inView = newState.includes('View');
@@ -168,7 +156,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     };
 
     $scope.addToScheme = function(){
-        console.log("adding");
         $scope.currentScheme.colors.push({R:0,G:0,B:0});
         setTimeout(function(){
             $scope.updateColor();
@@ -176,7 +163,6 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
     };
 
     $scope.updateColor = function(){
-        console.log($scope.colorModel);
         $('.color').each(function(index){
             var newColor = $scope.ColorConvert.convert($scope.currentScheme.colors[index],$scope.colorModel);
             $(this).css("background-color","rgba("
@@ -210,22 +196,43 @@ colorBlinder.controller('master', ['$scope', '$http', '$state','stateMachine', '
         $scope.getState();
     };
 
-        $scope.selectScheme = function(scheme){
-            $scope.currentScheme =  jQuery.extend(true, {}, scheme);
-            $scope.changeState('create');
+    $scope.selectScheme = function(scheme){
+        $scope.currentScheme =  jQuery.extend(true, {}, scheme);
+        $scope.changeState('create');
     };
 
     $scope.save = function(){
-      $http.post('/saveScheme',$scope.currentScheme).then(
-          function(){
-              $scope.getUserData();
-          },
-          function(data){
-              $scope.getUserData();
-              $scope.error = data.error;
-          }
-      );
+        if($scope.userData.email!='')
+            $http.post('/saveScheme',$scope.currentScheme).then(
+                function(){
+                    $scope.getUserData();
+                },
+                function(data){
+                    $scope.getUserData();
+                    $scope.error = data.error;
+                }
+            );
+        else
+            $scope.changeState('login');
     };
+
+    $scope.displayDelete = function(scheme){
+        $scope.changeState('delete');
+        $scope.schemeToDelete = scheme;
+    };
+
+    $scope.deleteScheme = function(){
+        $http.post('/deleteScheme', $scope.schemeToDelete)
+            .success(function(){
+                $scope.getUserData();
+                $scope.changeState('success');
+            })
+            .error(function(data){
+                $scope.error = data.error;
+            });
+    };
+
+
 
     $(document).ready($scope.initData);
 
