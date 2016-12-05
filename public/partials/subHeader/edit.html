@@ -3,7 +3,7 @@
         <li ng-click="eyeCancel()"><a>
             <span class="glyphicon" ng-class="!inView ? 'glyphicon-eye-open' : 'glyphicon-remove-circle'"></span>
         </a></li>
-        <li><a><span class="glyphicon glyphicon-share-alt"></span> Share</a></li>
+        <!--<li><a><span class="glyphicon glyphicon-share-alt"></span> Share</a></li>-->
         <li ng-click="save()"><a><span class="glyphicon glyphicon-save"></span> Save</a></li>
         <li>
             <select ng-options="blind as blind for blind in blindness" ng-model="colorModel" ng-change="updateBlindness(colorModel)"></select>
